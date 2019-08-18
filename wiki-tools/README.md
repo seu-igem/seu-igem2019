@@ -1,22 +1,26 @@
 # Wiki tools
 
-将 CWD 改为本目录，用 `ts-node <脚本名>` 执行脚本。
+**将 CWD 改为本目录**，用 `ts-node <脚本名>` 执行脚本。
 
-## fix.ts: iGEM Wiki 各种毛病兼容化处理 (build -> dist)
+## fix.ts: iGEM Wiki 各种~~辣鸡~~毛病兼容化处理 (build -> dist)
 
-1. 把 inline 的 script 转成一个独立 js 文件 (static/js/inline-%hash%-js])
-2. 替换 inline script 中的字符:
+1. 把 inline 的 script 转成一个独立 js 文件 (static/js/inline-%hash%.js])
+2. 替换 inline script 中的字符，使得 React 懒加载路径正确:
   - `.css?action=raw` -> `-css?action=raw`
   - `.js?action=raw` -> `-js?action=raw`
 3. 处理 index.html 中 `<script>` 和 `<link>` 的路径，`*.js/css` -> `*-js/css`
 
-## upload.ts: 上传 dist/*.{html,css,js}
+## upload.ts: 上传 dist/*.{css,js}
+
+`dist/dir/dir/*.ext` -> `igem.org/Team:XXX/dir/dir/*-ext`
+
+注意！`*.ext` -> `*-ext`
 
 ## assets.ts: 上传 assets 目录下的所有文件
 
-* `assets/dir/dir/dir/file.ext` -> `igem.org/.../T--TeamName--File&FilePathHash.ext`
+* `assets/dir/dir/file.ext` -> `igem.org/.../T--TeamName--File&FilePathHash.ext`
 * 上述 `File&FilePathHash` 计算法：
-  1. md5( 'dir/dir/dir/file.ext' + md5(File) )
+  1. md5( 'dir/dir/file.ext' + md5(File) )
   2. 截取前 8 位
 * 计算出的 Hash 若在 `assets/.track.json` 已存在则不上传，否则上传，并更新或生成 `src/assets-path.json`，更新或生成 `assets/.track.json`
 
