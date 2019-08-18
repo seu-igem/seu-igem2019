@@ -4,11 +4,11 @@
 
 ## fix.ts: iGEM Wiki 各种~~辣鸡~~毛病兼容化处理 (build -> dist)
 
-1. 把 inline 的 script 转成一个独立 js 文件 (static/js/inline-%hash%.js])
-2. 替换 inline script 中的字符，使得 React 懒加载路径正确:
+1. 抽取 index.html 中的 inline script 使成为一个独立 js 文件 (static/js/inline-%hash%.js)
+2. 替换 inline script 中的 React 懒加载路径:
   - `.css?action=raw` -> `-css?action=raw`
   - `.js?action=raw` -> `-js?action=raw`
-3. 处理 index.html 中 `<script>` 和 `<link>` 的路径，`*.js/css` -> `*-js/css`
+3. 处理 index.html 中 `<script>` 和 `<link>` 的路径，`*.{js,css}` -> `*-{js,css}`
 
 ## upload.ts: 上传 dist/*.{css,js}
 
