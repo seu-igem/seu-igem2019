@@ -1,6 +1,12 @@
+wiki-config.json
+
 # Editor Configuration
 .vscode/
 .vs/
+
+# tmp
+tmp/
+*.tmp
 
 # dependencies
 /node_modules
