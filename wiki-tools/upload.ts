@@ -4,7 +4,7 @@ import fs from 'fs-extra';
 import glob from 'glob';
 import login from './login';
 import config from '../wiki-config.json';
-import { delay } from './util';
+import { delay, concurrencyRestrictify } from './util';
 
 const selector = '../dist/**/*.{js,css}';
 interface File2BeUploaded {
@@ -19,36 +19,32 @@ interface File2BeUploaded {
   const files = searchTargetFiles();
   let succeedNum = 0;
 
-  for (const file of files) {
-    await singleUpload(file);
-  }
+  const singleUpload = concurrencyRestrictify(_singleUpload, 2);
 
-  async function singleUpload(file: File2BeUploaded) {
-    const edit_page = await browser.newPage();
-    console.log(file.path + ': 前往...');
-    await edit_page.goto(`${config.igemUrl}/wiki/index.php?title=Team:${config.teamName}/${file.path}&action=edit`, {
+  await Promise.all(
+    files.map(file => singleUpload(file))
+  );
+
+  async function _singleUpload(file: File2BeUploaded) {
+    const page = await browser.newPage();
+    console.log(file.path + ': 前往编辑页面...');
+    await page.goto(`${config.igemUrl}/wiki/index.php?title=Team:${config.teamName}/${file.path}&action=edit`, {
       waitUntil: 'domcontentloaded',
-      timeout: 60000
     });
-    console.log(file.path + ': 抵达...');
-    await edit_page.$eval(
+    console.log(file.path + ': 抵达编辑页面...');
+    await page.$eval(
       '.mw-ui-input',
       (el: any, content: string) => { el.value = content },
       file.content
     );
 
-    await edit_page.click('#wpSave');
     console.log(file.path + ': 提交...');
-
-    for (let i = 0; i < 600; ++i) {
-      await delay(0.1);
-      if (edit_page.url() === `${config.teamUrl}/${file.path}`) {
-        break;
-      }
-      if (i === 599) throw new Error('Login timeout');
-    }
+    await Promise.all([
+      page.click('#wpSave'),
+      page.waitForNavigation({ waitUntil: 'domcontentloaded' }),
+    ]);
     console.log(file.path + ': 提交成功 (' + (++succeedNum) + '/' + files.length + ')');
-    await edit_page.close();
+    await page.close();
   }
 
   await browser.close();

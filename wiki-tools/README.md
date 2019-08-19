@@ -16,13 +16,30 @@
 
 注意！`*.ext` -> `*-ext`
 
-## assets.ts: 上传 assets 目录下的所有文件
+## assets.ts: 上传 assets 目录下的所有文件（不含以 . 开头的文件）
 
-* `assets/dir/dir/file.ext` -> `igem.org/.../T--TeamName--File&FilePathHash.ext`
-* 上述 `File&FilePathHash` 计算法：
-  1. md5( 'dir/dir/file.ext' + md5(File) )
-  2. 截取前 8 位
+* `assets/dir/dir/file.ext` -> `igem.org/.../T--TeamName--Hash.ext`
 * 计算出的 Hash 若在 `assets/.track.json` 已存在则不上传，否则上传，并更新或生成 `src/assets-path.json`，更新或生成 `assets/.track.json`
+
+Format e.g.
+
+```
+assets/dir/cute-dir/abc.png   hash 前 8 位：11112222
+
+src/assets-path.json
+{
+  "dir": {
+    "cuteDir": { // 驼峰化
+      "abc$png": "iGEM URL" // 点号替换为 $
+    }
+  }
+}
+
+assets/.track.json
+{
+  "11112222": "iGEM URL"
+}
+```
 
 ### 限制
 
