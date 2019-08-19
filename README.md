@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://2019.igem.org/Team:SEU-Nanjing-China">
-    <img src="https://2019.igem.org/wiki/images/e/e7/T--SEU-Nanjing-China--1d6c7e87.png" alt="" width="120" height="120">
+    <img src="https://2019.igem.org/wiki/images/e/e7/T--SEU-Nanjing-China--1d6c7e87.png" alt="" width="200" height="200">
   </a>
   <p align="center">
     ALGAE TERMINATOR
