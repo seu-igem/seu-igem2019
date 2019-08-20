@@ -61,7 +61,17 @@ const assetsPath: AssetsPath = fs.existsSync('../src/assets-path.json')
       await page.close();
       throw new Error();
     } else {
-      const fileURL = await page.$eval('.internal', a => a.getAttribute('href'));
+      let fileURL = await page.$eval('.internal', a => a.getAttribute('href')) as string;
+      if (!fileURL.startsWith('http')) {
+        if (fileURL.startsWith('/')) {
+          fileURL = config.igemUrl + fileURL;
+        } else {
+          console.log(filepath + ': 获得了相对路径或其他类型地址，无法处理↓');
+          console.log(fileURL);
+          await page.close();
+          throw new Error();
+        }
+      }
       console.log(filepath + '  ->  ' + fileURL);
       await page.close();
       return fileURL as string;
