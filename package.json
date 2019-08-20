@@ -7,6 +7,9 @@
       "start": "node scripts/start.js",
       "build": "node scripts/build.js",
       "test": "node scripts/test.js",
+      "wiki:fix": "cd wiki-tools && ts-node fix.ts",
+      "wiki:upload": "cd wiki-tools && ts-node upload.ts",
+      "wiki:assets": "cd wiki-tools && ts-node assets.ts",
       "commit": "git-cz"
    },
    "dependencies": {
