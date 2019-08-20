@@ -1,17 +1,17 @@
 <p align="center">
-  <a href="https://2019.igem.org/Team:SEU-Nanjing-China">
-    <img src="https://2019.igem.org/wiki/images/e/e7/T--SEU-Nanjing-China--1d6c7e87.png" alt="" width="200" height="200">
-  </a>
-  <p align="center">
-    ALGAE TERMINATOR
-    <br>
-    2019 iGEM Wiki Website - Southeast University
-    <br>
-    <a href="https://2019.igem.org/Team:SEU-Nanjing-China"><strong>Explore Wiki »</strong></a>
-    <br>
-    <br>
-    <a href="https://github.com/xyzingh/EventNet/issues">Report bug or Make suggestion</a>
-  </p>
+   <a href="https://2019.igem.org/Team:SEU-Nanjing-China">
+      <img src="https://2019.igem.org/wiki/images/e/e7/T--SEU-Nanjing-China--1d6c7e87.png" alt="" width="200" height="200">
+   </a>
+   <p align="center">
+      ALGAE TERMINATOR
+      <br>
+     2019 iGEM Wiki Website - Southeast University
+     <br>
+     <a href="https://2019.igem.org/Team:SEU-Nanjing-China"><strong>Explore Wiki »</strong></a>
+     <br>
+     <br>
+     <a href="https://github.com/xyzingh/EventNet/issues">Report bug or Make suggestion</a>
+   </p>
 </p>
 
 ## [Wiki tools](./wiki-tools/README.md)

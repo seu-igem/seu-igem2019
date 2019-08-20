@@ -1,10 +1,10 @@
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "esnext"
-  },
-  "include": [
-    "./*"
-  ]
+   "extends": "../tsconfig.json",
+   "compilerOptions": {
+      "module": "commonjs",
+      "target": "esnext"
+   },
+   "include": [
+      "./*"
+   ]
 }
