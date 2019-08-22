@@ -2,6 +2,11 @@
    "assets": {
       "teamLogo$png": "https://2019.igem.org/wiki/images/e/e7/T--SEU-Nanjing-China--1d6c7e87.png",
       "teamLogo120x120$png": "https://2019.igem.org/wiki/images/b/b9/T--SEU-Nanjing-China--06335978.png",
-      "teamLogo200x200$png": "https://2019.igem.org/wiki/images/a/af/T--SEU-Nanjing-China--38a0c05c.png"
+      "teamLogo200x200$png": "https://2019.igem.org/wiki/images/a/af/T--SEU-Nanjing-China--38a0c05c.png",
+      "fonts": {
+         "FuturaPTBook$otf": "https://2019.igem.org/wiki/images/2/25/T--SEU-Nanjing-China--FuturaPTBook.otf",
+         "FuturaPTLight$otf": "https://2019.igem.org/wiki/images/8/85/T--SEU-Nanjing-China--a15258a7.otf",
+         "Raleway$woff": "https://2019.igem.org/wiki/images/2/24/T--SEU-Nanjing-China--22ce21a7.woff"
+      }
    }
 }
