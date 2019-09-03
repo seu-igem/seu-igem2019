@@ -1,0 +1,55 @@
+.darkTheme-doc #doc-1-bg {
+   background: #201F1E;
+}
+
+.darkTheme-doc #doc-2-bg {
+   background: #323130;
+}
+
+.darkTheme-doc #doc-3-bg {
+   background: #3B3A39;
+}
+
+.darkTheme-doc #doc-body h2 {
+   color: #e1dfdd;
+}
+
+.darkTheme-doc #doc-body p {
+   color: #edebe9;
+}
+
+
+.darkTheme-doc #doc-body h2::selection {
+   background: white;
+   color     : black;
+}
+
+.darkTheme-doc #doc-body h2::-moz-selection {
+   background: white;
+   color     : black;
+}
+
+.darkTheme-doc #doc-body h2::-webkit-selection {
+   background: white;
+   color     : black;
+}
+
+.darkTheme-doc #doc-body *::selection {
+   background: white;
+   color     : black;
+}
+
+.darkTheme-doc #doc-body *::-moz-selection {
+   background: white;
+   color     : black;
+}
+
+.darkTheme-doc #doc-body *::-webkit-selection {
+   background: white;
+   color     : black;
+}
+
+.darkTheme-doc .ms-ActivityItem-activityContent,
+.darkTheme-doc .ms-ActivityItem-timeStamp {
+   color: #e1dfdd;
+}

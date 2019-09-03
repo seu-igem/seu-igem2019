@@ -7,6 +7,18 @@
          "FuturaPTBook$otf": "https://2019.igem.org/wiki/images/2/25/T--SEU-Nanjing-China--FuturaPTBook.otf",
          "FuturaPTLight$otf": "https://2019.igem.org/wiki/images/8/85/T--SEU-Nanjing-China--a15258a7.otf",
          "Raleway$woff": "https://2019.igem.org/wiki/images/2/24/T--SEU-Nanjing-China--22ce21a7.woff"
+      },
+      "teamLogoStroke200x200$png": "https://2019.igem.org/wiki/images/9/92/T--SEU-Nanjing-China--d2393030.png",
+      "teamLogoStroke120x120$png": "https://2019.igem.org/wiki/images/e/eb/T--SEU-Nanjing-China--cb994398.png",
+      "teamLogoStroke$png": "https://2019.igem.org/wiki/images/e/ea/T--SEU-Nanjing-China--d7b19187.png",
+      "cover": {
+         "saplings3$jpg": "https://2019.igem.org/wiki/images/2/20/T--SEU-Nanjing-China--883a070d.jpg",
+         "tnSaplings3$jpg": "https://2019.igem.org/wiki/images/c/ce/T--SEU-Nanjing-China--b3779244.jpg"
+      },
+      "avatars": {
+         "ChengyuFu$jpg": "https://2019.igem.org/wiki/images/6/6d/T--SEU-Nanjing-China--98af2ebb.jpg",
+         "ChengyuFu64x64$png": "https://2019.igem.org/wiki/images/f/f2/T--SEU-Nanjing-China--567cc8bb.png",
+         "ChengyuFu32x32$png": "https://2019.igem.org/wiki/images/1/1d/T--SEU-Nanjing-China--550f6610.png"
       }
    }
 }

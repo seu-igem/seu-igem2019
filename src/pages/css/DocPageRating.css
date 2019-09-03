@@ -1,0 +1,76 @@
+.doc-rating-cmt-container {
+   margin-top     : 2em;
+   margin-bottom  : 1em;
+   display        : flex;
+   flex-wrap      : wrap;
+   align-items    : center;
+   justify-content: center;
+}
+
+.doc-rating-container {
+   flex     : 3 3 auto;
+   min-width: 28em;
+}
+
+.doc-cmt-container {
+   flex     : 1 1 auto;
+   min-width: 16em;
+   padding  : 0 1em;
+}
+
+.doc-rating {
+   display        : flex;
+   justify-content: center;
+}
+
+.doc-rating>div {
+   flex           : 0 1 5em;
+   display        : flex;
+   justify-content: center;
+   height         : 100%;
+}
+
+.doc-rating-btn {
+   flex: 0 0 auto;
+}
+
+.doc-rating-btn>* {
+   font-size  : 2em;
+   transition : color .3s;
+   user-select: none;
+   cursor     : pointer;
+}
+
+.doc-rating-hint {
+   text-align   : center;
+   font-size    : .6em;
+   margin-top   : .8em;
+   margin-bottom: 1em;
+}
+
+.doc-cmt-submit-container {
+   margin-top : .2em;
+   line-height: 32px;
+   font-size  : .6em;
+   text-align : right;
+}
+
+.lightTheme-doc .doc-rating-btn-inactive>* {
+   color: #c8c6c4;
+}
+
+.lightTheme-doc .doc-rating-btn-active>* {
+   color: #2b88d8;
+}
+
+.darkTheme-doc .doc-rating-btn-inactive>* {
+   color: #a19f9d;
+}
+
+.darkTheme-doc .doc-rating-btn-active>* {
+   color: #2b88d8;
+}
+
+.darkTheme-doc .doc-rating-cmt-container {
+   color: #edebe9;
+}

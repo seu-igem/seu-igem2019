@@ -1,10 +1,11 @@
 import $ from 'jquery';
 import { noop } from './util';
 
-const base = 'http://justlog.xyz/api/seu-igem/';
+const base = 'https://justlog.xyz/api/seu-igem';
 const URLs = {
-   error: base + 'err',
-   visit: base + 'visit',
+   error: base + '/err',
+   visit: base + '/visit',
+   feedback: base + '/feedback',
 };
 
 function post(url: string, data: any, dataType?: string) {
@@ -32,6 +33,18 @@ export const analysis = {
    logVisit() {
       post(URLs.visit, {
          page: String(window.location),
+      }).catch(noop);
+   },
+   ratingDoc(pagePath: string, rating: number) {
+      post(URLs.feedback, {
+         pagePath,
+         rating,
+      }).catch(noop);
+   },
+   commentDoc(pagePath: string, cmt: string) {
+      post(URLs.feedback, {
+         pagePath,
+         cmt,
       }).catch(noop);
    },
 };

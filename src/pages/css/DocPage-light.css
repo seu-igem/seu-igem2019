@@ -1,0 +1,50 @@
+.lightTheme-doc #doc-1-bg {
+   background: #EDEBE9;
+}
+
+.lightTheme-doc #doc-2-bg {
+   background: #FAF9F8;
+}
+
+.lightTheme-doc #doc-3-bg {
+   background: white;
+}
+
+.lightTheme-doc #doc-body h2 {
+   color: #323130;
+}
+
+.lightTheme-doc #doc-body p {
+   color: #201f1e;
+}
+
+
+.lightTheme-doc #doc-body h2::selection {
+   background: rgb(58, 116, 112);
+   color     : #FFF;
+}
+
+.lightTheme-doc #doc-body h2::-moz-selection {
+   background: rgb(58, 116, 112);
+   color     : #FFF;
+}
+
+.lightTheme-doc #doc-body h2::-webkit-selection {
+   background: rgb(58, 116, 112);
+   color     : #FFF;
+}
+
+.lightTheme-doc #doc-body *::selection {
+   background: rgba(154, 197, 194, 0.8);
+   color     : #666;
+}
+
+.lightTheme-doc #doc-body *::-moz-selection {
+   background: rgba(154, 197, 194, 0.8);
+   color     : #666;
+}
+
+.lightTheme-doc #doc-body *::-webkit-selection {
+   background: rgba(154, 197, 194, 0.8);
+   color     : #666;
+}
