@@ -3,7 +3,7 @@
    font-style  : normal;
    font-weight : 400;
    font-display: swap;
-   src         : local("Futura PT Light"), url(./fonts/FuturaPTLight.otf);
+   src         : local("Futura PT Light"), url(../assets/FuturaPTLight.otf);
 }
 
 @font-face {
@@ -11,7 +11,7 @@
    font-style  : normal;
    font-weight : 400;
    font-display: swap;
-   src         : local("Futura PT"), local("Futura PT Book"), url(./fonts/FuturaPTBook.otf);
+   src         : local("Futura PT"), local("Futura PT Book"), url(../assets/FuturaPTBook.otf);
 }
 
 /* latin */
@@ -20,5 +20,5 @@
    font-style  : normal;
    font-weight : 400;
    font-display: swap;
-   src         : local('Raleway'), local('Raleway-Regular'), url(./fonts/Raleway.woff) format('woff');
+   src         : local('Raleway'), local('Raleway-Regular'), url(../assets/Raleway.woff) format('woff');
 }

@@ -1,0 +1,160 @@
+* {
+   box-sizing: border-box;
+}
+
+body,
+html {
+   width   : 100vw;
+   height  : 100vh;
+   overflow: hidden;
+}
+
+#menubar {
+   position  : fixed;
+   width     : 100%;
+   height    : 18px;
+   background: #383838;
+   top       : 0;
+   left      : 0;
+}
+
+#root {
+   background : #333;
+   position   : absolute;
+   left       : 0;
+   top        : 18px;
+   width      : 100%;
+   height     : calc(100vh - 18px);
+   overflow   : auto;
+   font-size  : 16px;
+   line-height: 22px;
+   transition : all .3s;
+   transform  : scale(1);
+   font-family: Raleway, -apple-system,
+      BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans',
+      'Helvetica Neue', sans-serif;
+}
+
+#root::-webkit-scrollbar {
+   display: none;
+}
+
+#root h1 {
+   font-family: "Futura PT Light";
+   font-size  : 42px;
+   line-height: 52px;
+   color      : #292827;
+   margin     : 20px 0;
+}
+
+#root h2 {
+   font-family: "Futura PT Book";
+   font-size  : 24px;
+   line-height: 32px;
+   color      : #292827;
+   margin     : 10px 0;
+}
+
+#front-cover {
+   position  : relative;
+   width     : 100%;
+   height    : 38vh;
+   min-height: 150px;
+   z-index   : 0;
+}
+
+#front-cover-bg {
+   position: absolute;
+   left    : 0;
+   top     : 0;
+   width   : 100%;
+   height  : 100%;
+   z-index : 1;
+   overflow: hidden;
+}
+
+#front-cover-bg>img {
+   opacity      : 0;
+   /* transition: all .3s; */
+   position     : absolute;
+   left         : 50%;
+   top          : 50%;
+   transform    : translate(-50%, -50%);
+}
+
+#front-cover-txt {
+   font-family    : "Futura PT Light";
+   font-size      : 68px;
+   line-height    : 76px;
+   position       : absolute;
+   left           : 50%;
+   top            : 50%;
+   transform      : translate(-50%, -50%);
+   color          : #FFF;
+   text-decoration: underline;
+   text-align     : center;
+   letter-spacing : 5px;
+   text-shadow    : 1px 2px 4px grey;
+   user-select    : none;
+   z-index        : 2;
+}
+
+#header-container {
+   background: #201f1e;
+   width     : 100%;
+   height    : 45px;
+}
+
+#wiki-content {
+   width     : 100%;
+   height    : 3000px;
+   background: #f3f2f1;
+}
+
+
+
+
+
+
+/* 
+#header {
+   position           : static;
+   top                : 18px;
+   width              : 100%;
+   display            : -webkit-flex;
+   display            : flex;
+   align-items        : flex-start;
+   z-index            : 10;
+   perspective        : 500px;
+   -webkit-perspective: 500px;
+   perspective-origin : top;
+}
+
+
+@media(min-width: 768px) {}
+
+@media(min-width: 1366px) {}
+
+#logo {
+   filter: drop-shadow(0 0 12px #FFF);
+   height: 95%;
+}
+
+#bg-container,
+#bg-container>* {
+   position: absolute;
+   width   : 100%;
+   height  : 100%;
+   left    : 0;
+   top     : 0;
+}
+
+#bg-container>svg {
+   z-index: 0;
+}
+
+#bg-container>div {
+   user-select: none;
+   z-index    : 1;
+} */
