@@ -1,0 +1,47 @@
+$local: true;
+
+@font-face {
+   font-family : "Futura PT Light";
+   font-style  : normal;
+   font-weight : 400;
+   font-display: block;
+
+   @if $local {
+      src: local("Futura PT Light"), url(../assets/fonts/FuturaPTLight.otf);
+   }
+
+   @else {
+      src: local("Futura PT Light"), url(https://2019.igem.org/wiki/images/8/85/T--SEU-Nanjing-China--a15258a7.otf);
+   }
+}
+
+@font-face {
+   font-family : "Futura PT Book";
+   font-style  : normal;
+   font-weight : 400;
+   font-display: swap;
+
+   @if $local {
+      src: local("Futura PT"), local("Futura PT Book"), url(../assets/fonts/FuturaPTBook.otf);
+   }
+
+   @else {
+      src: local("Futura PT"), local("Futura PT Book"), url(https://2019.igem.org/wiki/images/2/25/T--SEU-Nanjing-China--FuturaPTBook.otf);
+   }
+}
+
+/* latin */
+@font-face {
+   font-family : 'Raleway';
+   font-style  : normal;
+   font-weight : 400;
+   font-display: swap;
+
+   @if $local {
+      src: local('Raleway'), local('Raleway-Regular'), url(../assets/fonts/Raleway.woff) format('woff');
+   }
+
+   @else {
+      src: local('Raleway'), local('Raleway-Regular'), url(https://2019.igem.org/wiki/images/2/24/T--SEU-Nanjing-China--22ce21a7.woff) format('woff');
+   }
+}
