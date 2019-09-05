@@ -103,6 +103,7 @@ export default class DocPageInfobar extends React.Component<IDocPageInfobarProps
                      onClick: () => { locaCtrl.navTo(nav.path); },
                   }))} />
                </div>
+               <div></div>
                <div>
                   <CommandBarButton
                      iconProps={{ iconName: 'Share' }}

@@ -9,6 +9,10 @@ class PageController {
       resize: [],
       headerFixed: [boolean],
       darkMode: [boolean],
+      lang: [{
+         enableTranslate: boolean,
+         lang: string,
+      }]
    }>();
 
    public settings = {

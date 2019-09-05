@@ -29,8 +29,8 @@ export default class Cover extends React.Component<{
             </figure>
             <div id='cover-txt-container' ref={el => this.$CoverTxtContainer = el}>
                <div id='cover-txt'>
-                  <span>{this.props.title}</span>
                   <div></div>
+                  <span>{this.props.title}</span>
                </div>
             </div>
          </div>

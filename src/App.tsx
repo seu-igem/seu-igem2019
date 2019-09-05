@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './css/reset.css';
-import './css/fonts.css';
+import './css/fonts.scss';
 import './css/root.css';
 
 import { assets } from './assets-path.json';

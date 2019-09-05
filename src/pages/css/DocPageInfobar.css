@@ -9,6 +9,11 @@
 }
 
 #doc-infobar-bcs>*:nth-child(2) {
+   flex     : 0 1 auto;
+   min-width: 20px;
+}
+
+#doc-infobar-bcs>*:nth-child(3) {
    flex: 0 0 auto;
 }
 
@@ -34,7 +39,7 @@
 }
 
 .doc-infobar-settings {
-   flex   : 0 0 auto;
+   flex   : 0 0 44px;
    display: none;
 }
 
