@@ -37,6 +37,7 @@ export default class DocPage extends React.Component<IDocPageProps, IDocPageStat
    private $Doc1Bg: HTMLDivElement;
    private $Doc2Bg: HTMLDivElement;
    private $Doc3Bg: HTMLDivElement;
+   private $DocAside: HTMLElement;
    private $DocAsideContainer: HTMLDivElement;
    private $DocInfobar: HTMLDivElement;
    private $SettingBtn?: HTMLDivElement | null;
@@ -52,18 +53,19 @@ export default class DocPage extends React.Component<IDocPageProps, IDocPageStat
    private isDoc3BgFixed = false;
    private isHeaderFixed = false;
 
-   // 若使用 React 原生 state + render，卡顿感明显
+   // 滚动吸顶若使用 React 原生 state + render，卡顿感明显
+   // 必须避免 React diff 造成属性覆盖
    private onHeaderFixed = (fixed: boolean) => {
       this.isHeaderFixed = fixed;
       const { $Doc1, $Doc1Bg, $Doc2Bg, $DocInfobar, $DocAsideContainer } = this;
       if (fixed) {
-         $Doc1.classList.add('doc-1-headerfixed');
+         $Doc1.style.zIndex = '10';
          $Doc1Bg.classList.add('fixed-at-doc-top');
          $Doc2Bg.classList.add('fixed-at-doc-top');
          $DocInfobar.classList.add('fixed-at-doc-top');
          $DocAsideContainer.classList.add('fixed-at-doc-top');
       } else {
-         $Doc1.classList.remove('doc-1-headerfixed');
+         $Doc1.style.zIndex = '60';
          $Doc1Bg.classList.remove('fixed-at-doc-top');
          $Doc2Bg.classList.remove('fixed-at-doc-top');
          $DocInfobar.classList.remove('fixed-at-doc-top');
@@ -100,6 +102,8 @@ export default class DocPage extends React.Component<IDocPageProps, IDocPageStat
    private focusAnimation = () => {
       this.$Doc1.style.opacity = '1';
       this.$Doc2Inner.style.left = '0';
+      this.$DocAside.style.opacity = '1';
+      this.$DocAside.style.top = '5em';
    }
 
    public componentDidMount() {
@@ -136,12 +140,18 @@ export default class DocPage extends React.Component<IDocPageProps, IDocPageStat
             {
                this.props.hasAside &&
                <div id='doc-aside-container' ref={el => this.$DocAsideContainer = el!}>
-                  <aside id='doc-aside'>
-                     <DocPageAside
-                        darkMode={this.state.darkMode}
-                        enableTranslate={this.state.enableTranslate}
-                        lang={this.state.lang}
-                     />
+                  <aside id='doc-aside' ref={el => this.$DocAside = el!}>
+                     <div id='doc-aside-leftspace'></div>
+                     <div id='doc-aside-inner'>
+                        <div id='doc-aside-setting-container'>
+                           <DocPageAside
+                              darkMode={this.state.darkMode}
+                              enableTranslate={this.state.enableTranslate}
+                              lang={this.state.lang}
+                           />
+                        </div>
+                     </div>
+                     <div id='doc-aside-rightspace'></div>
                   </aside>
                </div>
             }

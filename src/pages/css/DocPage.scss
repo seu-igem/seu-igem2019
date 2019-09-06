@@ -9,10 +9,6 @@ $header-height        : 98px;
    opacity      : .8;
    transition   : opacity .6s;
    overflow     : hidden;
-
-   &-headerfixed {
-      z-index: 10 !important;
-   }
 }
 
 .fixed-at-doc-top {
@@ -42,7 +38,31 @@ $header-height        : 98px;
 }
 
 #doc-aside {
-   position: relative;
+   position  : absolute;
+   top       : 7em;
+   transition: top .6s, opacity .6s;
+   opacity   : .8;
+   width     : 100%;
+   display   : flex;
+
+   &-inner {
+      flex       : 1 0 auto;
+      display    : flex;
+      flex-flow  : column nowrap;
+      align-items: flex-end;
+   }
+
+   &-setting-container {
+      width: calc(9em + 80px);
+   }
+
+   &-leftspace {
+      flex: 5 1 3em;
+   }
+
+   &-rightspace {
+      flex: 0 1 3em;
+   }
 }
 
 .doc-2 {
@@ -198,5 +218,5 @@ $header-height        : 98px;
 }
 
 .doc-setting-callout-inner {
-   padding: 1.5em 2em;
+   padding: 1.5em 1em;
 }

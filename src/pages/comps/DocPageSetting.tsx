@@ -1,9 +1,11 @@
 import React from 'react';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { FontIcon } from 'office-ui-fabric-react/lib/Icon';
+import { Dropdown, ResponsiveMode } from 'office-ui-fabric-react/lib/Dropdown';
 import { pageBehavior } from '../../page';
 
-import '../css/DocPageSetting.css';
+import '../css/DocPageSetting.scss';
+import { Translate } from '../../translate';
 
 interface IDocPageSettingProps {
    darkMode: boolean;
@@ -23,28 +25,42 @@ export default class DocPageSetting extends React.Component<IDocPageSettingProps
    }
 
    public render() {
+      const { langList } = Translate;
       return (<>
          <Toggle
             inlineLabel
-            label={<span>
-               <FontIcon iconName='Light' /> Dark Mode
-            </span>}
+            label={<>
+               <FontIcon iconName='Light' />
+               <span>&nbsp;Dark Mode</span>
+            </>}
             onText='On'
             offText='Off'
             checked={this.props.darkMode}
             onChange={(ev, checked) => {
                pageBehavior.emit('darkMode', checked);
             }}
+            className='doc-setting-tg'
          />
          <Toggle
             inlineLabel
-            label={<span>
-               <FontIcon iconName='Translate' /> Translate
-            </span>}
+            label={<>
+               <FontIcon iconName='Translate' />
+               <span>&nbsp;Translate</span>
+            </>}
             onText='On'
             offText='Off'
             checked={this.props.enableTranslate}
             onChange={this.onTranslateToggleChange}
+            className='doc-setting-tg'
+         />
+         <Dropdown
+            defaultSelectedKey='zh'
+            options={Object.keys(langList).map(key => ({
+               key,
+               text: (langList as any)[key],
+            }))}
+            responsiveMode={ResponsiveMode.large}
+            className='doc-setting-dd'
          />
       </>);
    }
