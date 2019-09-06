@@ -13,6 +13,12 @@ interface IDocPageSettingProps {
    lang: string;
 }
 
+const { langList } = Translate;
+const dropdownList = Object.keys(langList).map(key => ({
+   key,
+   text: (langList as any)[key],
+}));
+
 export default class DocPageSetting extends React.Component<IDocPageSettingProps> {
    private onTranslateToggleChange = (
       ev: React.MouseEvent<HTMLElement, MouseEvent>,
@@ -25,7 +31,6 @@ export default class DocPageSetting extends React.Component<IDocPageSettingProps
    }
 
    public render() {
-      const { langList } = Translate;
       return (<>
          <Toggle
             inlineLabel
@@ -55,10 +60,7 @@ export default class DocPageSetting extends React.Component<IDocPageSettingProps
          />
          <Dropdown
             defaultSelectedKey='zh'
-            options={Object.keys(langList).map(key => ({
-               key,
-               text: (langList as any)[key],
-            }))}
+            options={dropdownList}
             responsiveMode={ResponsiveMode.large}
             className='doc-setting-dd'
          />

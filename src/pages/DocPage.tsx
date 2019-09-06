@@ -7,7 +7,7 @@ import './css/DocPage.scss';
 import './css/DocPage-light.css';
 import './css/DocPage-dark.css';
 
-import { pageCtrl, pageBehavior } from '../page';
+import { pageCtrl, pageBehavior, PageLoadingStage } from '../page';
 import { IEditor } from '../types';
 import DocPageAside from './comps/DocPageAside';
 import DocPageSetting from './comps/DocPageSetting';
@@ -107,6 +107,9 @@ export default class DocPage extends React.Component<IDocPageProps, IDocPageStat
    }
 
    public componentDidMount() {
+      setTimeout(() => {
+         pageBehavior.emit('pageLoadingStage', PageLoadingStage.codeLoaded);
+      }, 0);
       pageBehavior.once('scroll', this.focusAnimation);
       setTimeout(this.focusAnimation, 6000);
 
@@ -198,7 +201,6 @@ export default class DocPage extends React.Component<IDocPageProps, IDocPageStat
                               pagePath='/Description'
                            />
                         }
-                        <div style={{ height: '4em' }}></div>
                      </div>
                   </article>
                </div>

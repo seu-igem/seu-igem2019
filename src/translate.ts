@@ -1,7 +1,7 @@
 export class Translate {
    public static readonly langList = {
       zh: '中文（简体）',
-      cht: '中文（繁体）',
+      cht: '中文（繁體）',
       fra: 'Français',
    };
    public static readonly langMap = {

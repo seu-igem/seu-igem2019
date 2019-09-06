@@ -10,6 +10,7 @@ import Header from './comps/Header';
 import DocPage from './pages/DocPage';
 import { initTheme } from './pages/theme';
 import H2 from './comps/H2';
+import Footer from './comps/Footer';
 
 export default class App extends React.Component<{}, {}> {
    public componentDidMount() {
@@ -97,6 +98,7 @@ export default class App extends React.Component<{}, {}> {
                lastModified='3 days ago'
                content={content}
             />
+            <Footer />
          </div>
       );
    }

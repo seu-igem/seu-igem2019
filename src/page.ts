@@ -12,7 +12,8 @@ class PageController {
       lang: [{
          enableTranslate: boolean,
          lang: string,
-      }]
+      }],
+      pageLoadingStage: [PageLoadingStage]
    }>();
 
    public settings = {
@@ -59,7 +60,7 @@ export function queryPage(path: string): Page {
    return routes[path] || page404;
 }
 
-enum PageLoadingStage {
+export enum PageLoadingStage {
    notLoading,
    loading,
    codeLoaded,

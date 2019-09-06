@@ -1,0 +1,47 @@
+#footer {
+   opacity   : 0;
+   transition: opacity .6s;
+   position  : relative;
+   z-index   : 100;
+   height    : 1.8em * 3;
+}
+
+.footer-strip {
+   height: 1.8em;
+
+   &:nth-child(1) {
+      opacity   : .7;
+      background: darken(rebeccapurple, 5%);
+   }
+
+   &:nth-child(2) {
+      opacity   : .8;
+      background: darken(rebeccapurple, 20%);
+   }
+
+   &:nth-child(3) {
+      opacity   : .95;
+      background: darken(rebeccapurple, 30%);
+   }
+}
+
+#footer-1 {
+   background: black;
+   padding   : 2em 0;
+}
+
+#footer-2 {
+   display      : flex;
+   justify-items: center;
+}
+
+.footer-space {
+   flex     : 1 1 auto;
+   min-width: 1em;
+}
+
+#footer-content {
+   flex      : 8 1 auto;
+   background: red;
+   height    : 200px;
+}
