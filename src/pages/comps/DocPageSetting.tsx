@@ -1,22 +1,22 @@
 import React from 'react';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { FontIcon } from 'office-ui-fabric-react/lib/Icon';
-import { Dropdown, ResponsiveMode } from 'office-ui-fabric-react/lib/Dropdown';
-import { pageBehavior } from '../../page';
+import { Dropdown, ResponsiveMode, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 
-import '../css/DocPageSetting.scss';
-import { Translate } from '../../translate';
+import './css/DocPageSetting.scss';
+import { supportedLanguages } from '../../translation';
+import { context } from '../../context';
 
 interface IDocPageSettingProps {
    darkMode: boolean;
+   translatable: boolean;
    enableTranslate: boolean;
    lang: string;
 }
 
-const { langList } = Translate;
-const dropdownList = Object.keys(langList).map(key => ({
+const TranslateDropdownList = Object.keys(supportedLanguages).map(key => ({
    key,
-   text: (langList as any)[key],
+   text: supportedLanguages[key],
 }));
 
 export default class DocPageSetting extends React.Component<IDocPageSettingProps> {
@@ -24,10 +24,31 @@ export default class DocPageSetting extends React.Component<IDocPageSettingProps
       ev: React.MouseEvent<HTMLElement, MouseEvent>,
       checked?: boolean
    ) => {
-      pageBehavior.emit('lang', {
-         enableTranslate: checked,
+      const newLang = {
+         enableTranslate: !!checked,
          lang: this.props.lang,
-      });
+      };
+      context.translation = newLang;
+      context.emit('translation', newLang);
+   }
+   private onTranslateDropdownChange = (
+      event: React.FormEvent<HTMLDivElement>,
+      option?: IDropdownOption | undefined,
+      index?: number | undefined
+   ) => {
+      const newLang = {
+         enableTranslate: this.props.enableTranslate,
+         lang: option!.key + '',
+      };
+      context.translation = newLang;
+      context.emit('translation', newLang);
+   }
+   private switchDarkMode = (
+      ev: React.MouseEvent<HTMLElement, MouseEvent>,
+      checked: boolean | undefined
+   ) => {
+      context.darkMode = !!checked;
+      context.emit('darkMode', !!checked);
    }
 
    public render() {
@@ -41,29 +62,32 @@ export default class DocPageSetting extends React.Component<IDocPageSettingProps
             onText='On'
             offText='Off'
             checked={this.props.darkMode}
-            onChange={(ev, checked) => {
-               pageBehavior.emit('darkMode', checked);
-            }}
+            onChange={this.switchDarkMode}
             className='doc-setting-tg'
          />
-         <Toggle
-            inlineLabel
-            label={<>
-               <FontIcon iconName='Translate' />
-               <span>&nbsp;Translate</span>
-            </>}
-            onText='On'
-            offText='Off'
-            checked={this.props.enableTranslate}
-            onChange={this.onTranslateToggleChange}
-            className='doc-setting-tg'
-         />
-         <Dropdown
-            defaultSelectedKey='zh'
-            options={dropdownList}
-            responsiveMode={ResponsiveMode.large}
-            className='doc-setting-dd'
-         />
+         {this.props.translatable &&
+            <>
+               <Toggle
+                  inlineLabel
+                  label={<>
+                     <FontIcon iconName='Translate' />
+                     <span>&nbsp;Translate</span>
+                  </>}
+                  onText='On'
+                  offText='Off'
+                  checked={this.props.enableTranslate}
+                  onChange={this.onTranslateToggleChange}
+                  className='doc-setting-tg'
+               />
+               <Dropdown
+                  selectedKey={this.props.lang}
+                  options={TranslateDropdownList}
+                  responsiveMode={ResponsiveMode.large}
+                  className='doc-setting-dd'
+                  onChange={this.onTranslateDropdownChange}
+               />
+            </>
+         }
       </>);
    }
 }

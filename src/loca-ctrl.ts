@@ -1,5 +1,4 @@
 import { EventEmitter } from './util';
-import { queryPage, Page } from './page';
 
 const { location, history } = window;
 
@@ -11,9 +10,9 @@ class LocationController extends EventEmitter<{
    private static readonly prefix = '/Team:SEU-Nanjing-China';
    public static readonly inst = new LocationController();
 
-   private href = '';
-   private path = '';
-   private hash = '';
+   public href = '';
+   public path = '';
+   public hash = '';
    constructor() {
       super();
       if (LocationController.inst) return LocationController.inst;
@@ -59,3 +58,8 @@ class LocationController extends EventEmitter<{
 }
 
 export const locaCtrl = LocationController.inst;
+
+// Trigger the event in next macro task.
+setTimeout(() => {
+   locaCtrl.emit('hrefDidUpdate');
+}, 0);

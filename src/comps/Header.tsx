@@ -1,45 +1,40 @@
 import React from 'react';
 
-import { assets } from '../assets-path.json';
-import './css/Header.css';
-import { pageBehavior } from '../page';
+import './css/Header.scss';
+import { context } from '../context';
 
 export default class Header extends React.Component {
    public render() {
       return (
-         <div id='header-container' data-focus='0' ref={el => this.$HeaderContainer = el}>
+         <div id='header-container' ref={el => this.$HeaderContainer = el}>
             <header id='header' ref={el => this.$Header = el}>
-               <img id='logo'
-                  src={assets.teamLogoStroke200x200$png}
-                  style={{ height: '100%' }}
-                  alt='logo'
-               />
             </header>
          </div>
       );
    }
-   private $HeaderContainer?: HTMLDivElement | null;
-   private $Header?: HTMLHeadElement | null;
+   public $HeaderContainer?: HTMLDivElement | null;
+   public $Header?: HTMLHeadElement | null;
    private isHeaderFixed = false;
 
    private onPageScroll = () => {
-      if (this.$HeaderContainer!.getBoundingClientRect().top <= 18) {
+      const { $HeaderContainer } = this;
+      if ($HeaderContainer!.getBoundingClientRect().top <= 18) {
          if (!this.isHeaderFixed) {
-            this.$HeaderContainer!.classList.add('fixed-header');
+            $HeaderContainer!.classList.add('fixed-header');
             this.isHeaderFixed = true;
-            pageBehavior.emit('headerFixed', true);
+            context.emit('headerFixed', true);
          }
       } else if (this.isHeaderFixed) {
-         this.$HeaderContainer!.classList.remove('fixed-header');
+         $HeaderContainer!.classList.remove('fixed-header');
          this.isHeaderFixed = false;
-         pageBehavior.emit('headerFixed', false);
+         context.emit('headerFixed', false);
       }
    }
 
    public componentDidMount() {
-      pageBehavior.on('scroll', this.onPageScroll);
+      context.on('scroll', this.onPageScroll);
    }
    public componentWillUnmount() {
-      pageBehavior.removeListener('scroll', this.onPageScroll);
+      context.removeListener('scroll', this.onPageScroll);
    }
 }

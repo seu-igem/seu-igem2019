@@ -2,7 +2,7 @@ import React from 'react';
 
 import { analysis } from '../../analysis';
 
-import '../css/DocPageRating.css';
+import './css/DocPageRating.scss';
 import { FontIcon } from 'office-ui-fabric-react/lib/Icon';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';

@@ -4,3 +4,9 @@ export interface IEditor {
    hash: string;
    avatar: string;
 }
+
+export enum LoadingState {
+   NotLoading,
+   Loading,
+   Loaded,
+}

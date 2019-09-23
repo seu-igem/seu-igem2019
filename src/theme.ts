@@ -1,5 +1,5 @@
 import { createTheme, loadTheme } from 'office-ui-fabric-react/lib/Styling';
-import { pageCtrl } from '../page';
+import { context } from './context';
 
 export const lightTheme = createTheme({
    palette: {
@@ -19,11 +19,11 @@ export const darkTheme = createTheme({
    },
 });
 
-pageCtrl.pageBehavior.on('darkMode', isDarkMode => {
-   pageCtrl.settings.darkMode = isDarkMode;
+context.on('darkMode', isDarkMode => {
+   context.darkMode = isDarkMode;
    loadTheme(isDarkMode ? darkTheme : lightTheme);
 });
 
 export function initTheme() {
-   loadTheme(pageCtrl.settings.darkMode ? darkTheme : lightTheme);
+   loadTheme(context.darkMode ? darkTheme : lightTheme);
 }

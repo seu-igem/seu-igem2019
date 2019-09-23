@@ -1,7 +1,7 @@
 export function noop() { }
 
 export function delay(ms: number) {
-   return new Promise(resolve => {
+   return new Promise<void>(resolve => {
       setTimeout(resolve, ms);
    });
 }
@@ -10,7 +10,7 @@ export function range(from: number, to: number) {
    const length = to - from + 1;
    const step = to > from ? 1 : -1;
    const arr = new Array(length);
-   for (let i = from, j = 0; i < length; i += step, ++j) {
+   for (let i = from, j = 0; j < length; i += step, ++j) {
       arr[j] = i;
    }
    return arr;
@@ -22,6 +22,17 @@ export function once<T extends (...args: any[]) => void>(fn: T) {
       if (triggered) return;
       triggered = true;
       fn.apply(null, args);
+   }) as T;
+}
+
+export function lazy<T extends () => any>(fn: T) {
+   let calculated = false;
+   let result: ReturnType<T>;
+   return (() => {
+      if (calculated) return result;
+      calculated = true;
+      result = fn();
+      return result;
    }) as T;
 }
 

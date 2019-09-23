@@ -2,10 +2,12 @@ import React from 'react';
 import { ActivityItem } from 'office-ui-fabric-react/lib/ActivityItem';
 import { Breadcrumb } from 'office-ui-fabric-react/lib/Breadcrumb';
 import { CommandBarButton, IconButton } from 'office-ui-fabric-react/lib/Button';
+import { Shimmer, ShimmerElementsGroup, ShimmerElementType } from 'office-ui-fabric-react/lib/Shimmer';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
+
 import { locaCtrl } from '../../loca-ctrl';
-import '../css/DocPageInfobar.css';
+import './css/DocPageInfobar.scss';
 
 interface IDocPageInfobarProps {
    navs: Array<{
@@ -18,7 +20,7 @@ interface IDocPageInfobarProps {
       nameAbbr: string;
       avatar: string;
    }>;
-   timestamp: string;
+   timestamp?: string;
    switchSettingCallout: () => void;
 }
 
@@ -135,13 +137,33 @@ export default class DocPageInfobar extends React.Component<IDocPageInfobarProps
                </div>
             </div>
             <div id='doc-infobar-activity'>
-               <ActivityItem
-                  activityDescription={activityDescription}
-                  timeStamp={timestamp}
-                  {...activityProps}
-               />
+               <Shimmer customElementsGroup={this._getCustomElements()} width={300} isDataLoaded={!!this.props.editors}>
+                  <ActivityItem
+                     activityDescription={activityDescription}
+                     timeStamp={timestamp}
+                     {...activityProps}
+                  />
+               </Shimmer>
             </div>
          </>
+      );
+   }
+   private _getCustomElements = (): JSX.Element => {
+      return (
+         <div style={{ display: 'flex' }}>
+            <ShimmerElementsGroup
+               shimmerElements={[{ type: ShimmerElementType.circle, height: 32 }, { type: ShimmerElementType.gap, width: 16, height: 32 }]}
+            />
+            <ShimmerElementsGroup
+               flexWrap={true}
+               width='100%'
+               shimmerElements={[
+                  { type: ShimmerElementType.line, width: '100%', height: 10, verticalAlign: 'bottom' },
+                  { type: ShimmerElementType.line, width: '90%', height: 8 },
+                  { type: ShimmerElementType.gap, width: '10%', height: 16 },
+               ]}
+            />
+         </div>
       );
    }
 }

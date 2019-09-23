@@ -1,104 +1,118 @@
 import React from 'react';
 
+import { locaCtrl } from './loca-ctrl';
+import { queryPage, Page } from './page';
+import { context } from './context';
+import { initTheme } from './theme';
+
 import './css/reset.css';
 import './css/fonts.scss';
-import './css/root.css';
+import './css/root.scss';
 
-import { assets } from './assets-path.json';
-import Cover from './comps/Cover';
 import Header from './comps/Header';
-import DocPage from './pages/DocPage';
-import { initTheme } from './pages/theme';
-import H2 from './comps/H2';
+import Loading from './comps/Loading';
 import Footer from './comps/Footer';
 
-export default class App extends React.Component<{}, {}> {
+import { InitialPage } from './pages/Initial';
+
+
+interface IAppState {
+   BeforeHeader: React.ComponentType<any> | false;
+   BeforeHeaderProps: any;
+   Body: React.ComponentType<any> | false;
+   BodyProps: any;
+   showLoading: boolean;
+   showFooter: boolean;
+}
+
+export default class App extends React.Component<{}, IAppState> {
+   public $BeforeHeader: any;
+   public $Header: Header;
+   public $Body: any;
+   public $Footer: Footer;
+   public $FixedBelowHeader: HTMLDivElement;
+
+   public state: IAppState = {
+      BeforeHeader: false,
+      BeforeHeaderProps: {},
+      Body: false,
+      BodyProps: {},
+      showLoading: true,
+      showFooter: false,
+   };
+   public currPage: Page = InitialPage;
+   public nextPage: Page | null = null;
+
    public componentDidMount() {
+
+      if (navigator.userAgent.match(/Trident\/7\./) || navigator.userAgent.match(/Edge/)) {
+         window.addEventListener && window.addEventListener('mousewheel', e => {
+            e.preventDefault();
+            const wd = (e as any).wheelDelta;
+            const csp = window.pageYOffset;
+            window.scrollTo(0, csp - wd);
+         });
+      }
       initTheme();
+
+      context.on('headerFixed', isFixed => {
+         if (isFixed) {
+            this.$FixedBelowHeader.classList.add('on-header-fixed');
+         } else {
+            this.$FixedBelowHeader.classList.remove('on-header-fixed');
+         }
+      });
+
+      this.currPage.init({ App: this });
+
+      this.watchPageBehavior();
+
+      locaCtrl.on('pathDidUpdate', this.navToPath);
    }
+
+   public watchPageBehavior() {
+      window.addEventListener('scroll', () => {
+         context.emit('scroll');
+      });
+   }
+
+   public navToPath = (path: string) => {
+      const newPage = queryPage(path);
+      if (newPage === this.nextPage) return;
+      else if (this.nextPage === null && this.currPage === newPage) return;
+      else {
+         this.nextPage = newPage;
+         this.nextPage.init({ App: this });
+         this.currPage.exit();
+      }
+   }
+
    public render() {
-      const content = (<>
-         <H2>Why is it so urgent to deal with algae bloom?</H2>
-         <p>
-            As a highly reproducible algae, Cyanobacteria (blue-green algae) can reproduce infinitely as long as
-            there is adequate nutrition, which leads to the outbreak of Cyanobacteria all over the world.
-            Under the background of global warming and ocean acidification, large scale of Cyanobacteria bloom-forming
-            is unavoidable. Not only responsible for water quality deterioration, landscape destroy and foul smell
-            emission, Blue-green algae bloom is also accused of blocking gas exchange between water and air, causing
-            serious death of aquatic organisms.
-         </p>
-         <p>
-            Although a lot of resources and fund have been put on the treatment of algae bloom, the idea of early
-            prevention and control has no ideal effect at present. On the one hand, there’s no single biological,
-            chemical or physical method can reduce the level of nitrogen and phosphorus nutrients in water effectively.
-            On the other hand, recent records of Great Lakes have proven that there’s no direct positive correlation
-            between outbreaks of Cyanobacteria and the quantity of wastewater effluent, which overturns the conventional
-            idea and makes precautionary measures undependable.
-         </p>
-         <p>
-            That’s why we turn to comprehensive treatment after outbreaks and look for the wisdom from nature itself.
-         </p>
+      const { BeforeHeader, BeforeHeaderProps, Body, BodyProps } = this.state;
 
-         <H2>Where did our inspiration come from?</H2>
-         <p>
-            ‘From nature, to nature’, we always believe.
-         </p>
-         <p>
-            Although the cyanobacteria have already provided us with many environment problems, we believe it is still
-            possible to turn it into something useful. The cyanobacteria are rich in nutrients, but they have not been
-            well used because of their strong cell walls and difficult to remove algae toxins.
-         </p>
-         <p>
-            The best choice for nature problem is always hide in nature itself. Recently, we have found that the unique
-            intracellular digestion mechanism of the Branchiostoma can degrade algae into nutrients such as amino acids
-            and polysaccharides, and it can effectively degrade harmful substances such as algal toxins. This discovery
-            provides a new perspective and feasible ideas for the development of algae resources.
-         </p>
-
-         <H2>What’s our core ideas?</H2>
-         <p>
-            Branchiostoma digest tract epithelial cells through the powerful digestion and immune function gene group, not
-            only can directly degrade algae into amino acids, oligopeptides, oligosaccharides, oligonucleotides, fatty acids,
-            vitamins and trace elements in the cell, and it can effectively degrade harmful substances such as algal toxins
-            and achieve the purpose of directly converting algae into absorbable and non-toxic nutrients. Using is better
-            than abandoning. According to our expectation, we can make cyanobacteria, which we once consider useless, become
-            a huge fortune.
-         </p>
-         <p>
-            The main feature of this project is ‘from nature, to nature’. We are focusing on the existing method in the natural world to solve ecological problems. On the one hand, the mechanism we used is clear, simple and efficient; on the other hand, the ecological security risks are low. Compared with the risk of introducing a foreign genome into the potential of conventional genetic engineering methods, the project adopts the idea of engineering production of functional proteins, which constitutes a high-efficiency reagent, and does not invest any external source into the ecosystem while efficiently treating cyanobacterial pollution.
-         </p>
-         <p>
-            From salvage to use, we are moving on.
-         </p>
-      </>);
       return (
          <div id='App'>
-            <Cover
-               imgUrl={assets.cover.saplings3$jpg}
-               tbimgUrl={assets.cover.tnSaplings3$jpg}
-               title='Description'
-            />
+            <div id='App-before-header'>
+               {BeforeHeader
+                  ? <BeforeHeader ref={(el: any) => this.$BeforeHeader = el} {...BeforeHeaderProps} />
+                  : this.state.showLoading && <div id='bh-loading-placeholder'></div>
+               }
+            </div>
 
-            <Header />
-            <DocPage
-               hasAside
-               hasInfobar
-               hasRating
-               pageLocation={[
-                  { text: 'Home', path: '/' },
-                  { text: 'Project', path: '/Description' },
-                  { text: 'Description', path: '/Description' },
-               ]}
-               editors={[
-                  {
-                     name: 'Chengyu Fu', hash: '#chengyu-fu',
-                     nameAbbr: 'CF', avatar: assets.avatars.ChengyuFu32x32$png,
-                  },
-               ]}
-               lastModified='3 days ago'
-               content={content}
-            />
-            <Footer />
+            <Header ref={el => this.$Header = el!} />
+
+            <div id='App-body'>
+               <Loading showLoading={this.state.showLoading} />
+               <div id='fixed-below-header' ref={el => this.$FixedBelowHeader = el!}></div>
+               {Body &&
+                  <Body
+                     ref={(el: any) => this.$Body = el}
+                     $Header={this.$Header}
+                     $FixedBelowHeader={this.$FixedBelowHeader}
+                     {...BodyProps}
+                  />}
+            </div>
+            <Footer ref={el => this.$Footer = el!} showFooter={this.state.showFooter} />
          </div>
       );
    }

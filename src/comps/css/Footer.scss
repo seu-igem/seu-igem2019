@@ -1,9 +1,23 @@
+$std-text-font: "Segoe UI",
+"Segoe UI Web (West European)",
+"Segoe UI",
+-apple-system,
+BlinkMacSystemFont,
+Roboto,
+"Helvetica Neue",
+sans-serif;
+
 #footer {
-   opacity   : 0;
-   transition: opacity .6s;
-   position  : relative;
-   z-index   : 100;
-   height    : 1.8em * 3;
+   position   : relative;
+   z-index    : 100;
+   font-family: $std-text-font;
+   color      : white;
+   text-align : start;
+   flex       : 0 0 auto;
+}
+
+#footer-strip-container {
+   height: 1.8em * 3;
 }
 
 .footer-strip {
@@ -37,11 +51,90 @@
 
 .footer-space {
    flex     : 1 1 auto;
-   min-width: 1em;
+   min-width: 4em;
 }
 
 #footer-content {
-   flex      : 8 1 auto;
-   background: red;
-   height    : 200px;
+   flex: 6 1 auto;
+}
+
+#footer-cont-logo {
+   display  : flex;
+   flex-flow: row wrap;
+   color    : #faf9f8;
+}
+
+#footer-cta {
+   flex         : 8 0 auto;
+   min-width    : 27em;
+   padding-right: 5em;
+}
+
+#footer-cta-inner {
+   max-width: 50em;
+
+   &>h3 {
+      font-size  : 2.2em;
+      color      : #edebe9;
+      user-select: none;
+   }
+
+   &>hr {
+      width        : 100%;
+      color        : white;
+      background   : white;
+      margin-bottom: 1.4em;
+   }
+
+   &>table {
+      margin-bottom: .4em;
+      font-size    : 1.2em;
+      line-height  : 1.4;
+      background   : transparent;
+      color        : white;
+   }
+}
+
+#footer-logo {
+   flex        : 3 1 auto;
+   // min-width: ;
+}
+
+.footer-logo-btn {
+   height     : 5em;
+   display    : flex;
+   align-items: center;
+   user-select: none;
+   transition : background-color, .2s;
+   margin     : .4em 0;
+   border     : rgba(0, 0, 0, 0) solid 2px;
+
+   & * {
+      user-select: none;
+   }
+
+   &:hover {
+      background: #1C1C1C;
+      border    : #333 solid 2px;
+      cursor    : pointer;
+   }
+
+   &:active {
+      background: rgba(255, 255, 255, .5);
+   }
+}
+
+#footer-github-container {
+   padding       : .2em .7em;
+   // max-width  : 20em;
+   display       : flex;
+   align-items   : center;
+}
+
+#footer-github-msg {
+   &>h2 {
+      font-size    : 1.2em;
+      margin-bottom: .2em;
+      color        : white;
+   }
 }

@@ -21,7 +21,7 @@ htmlContent = htmlContent
          return `
          <script>
             !function(){
-               var script = '${$1.replace(/'/g, '\'')}';
+               var script = '${$1.replace(/'/g, '\'').replace(/\\/g, '\\\\')}';
                var symbolAnd = '&'.replace('amp;', '');
                script = script.replace(/&/g, symbolAnd);
                eval(script);

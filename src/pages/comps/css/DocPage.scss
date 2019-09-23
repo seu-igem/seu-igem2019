@@ -6,6 +6,7 @@ $header-height        : 98px;
    width        : 100%;
    z-index      : 60;
    border-radius: 18px 18px 0 0;
+   display      : none;
    opacity      : .8;
    transition   : opacity .6s;
    overflow     : hidden;
@@ -39,7 +40,7 @@ $header-height        : 98px;
 
 #doc-aside {
    position  : absolute;
-   top       : 7em;
+   top       : 9em;
    transition: top .6s, opacity .6s;
    opacity   : .8;
    width     : 100%;
@@ -214,6 +215,14 @@ $header-height        : 98px;
       margin-bottom : 1em;
       padding-left  : 1.2em;
       letter-spacing: .018em;
+   }
+
+   & i {
+      font-style: italic;
+   }
+
+   & b {
+      font-weight: bold;
    }
 }
 

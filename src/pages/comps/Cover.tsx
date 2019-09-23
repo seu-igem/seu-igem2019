@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/Cover.css';
 import $ from 'jquery';
-import { pageBehavior } from '../page';
+import { context } from '../../context';
 
 export default class Cover extends React.Component<{
    imgUrl: string;
@@ -93,8 +93,8 @@ export default class Cover extends React.Component<{
       this.$CoverTxtContainer!.style.top = newTop / 3 + 'px';
    }
    public componentDidMount() {
-      pageBehavior.on('resize', this.resizeCoverImg);
-      pageBehavior.on('scroll', this.bgParallaxScrolling);
+      window.addEventListener('resize', this.resizeCoverImg);
+      context.on('scroll', this.bgParallaxScrolling);
 
       this.$Img!.addEventListener('load', this.onImgLoad);
       if (this.$Img!.complete) this.onImgLoad();
@@ -104,18 +104,26 @@ export default class Cover extends React.Component<{
    }
 
    public componentWillUnmount() {
-      pageBehavior.removeListener('resize', this.resizeCoverImg);
-      pageBehavior.removeListener('scroll', this.bgParallaxScrolling);
+      window.removeEventListener('resize', this.resizeCoverImg);
+      context.removeListener('scroll', this.bgParallaxScrolling);
    }
 
-   public shouldComponentUpdate() {
-      this.isImgLoaded = false;
-      this.isTbImgLoaded = false;
-      this.$Img!.style.opacity = '0';
-      this.$Img!.style.transform = 'translateZ(40px)';
-      this.$Img!.style.filter = 'blur(18px)';
-      this.$TbImg!.style.opacity = '0';
+   public shouldComponentUpdate(nextProps: Readonly<{
+      imgUrl: string;
+      tbimgUrl: string;
+      title: string;
+   }>) {
+      if (this.props.imgUrl !== nextProps.imgUrl) {
+         this.isImgLoaded = false;
+         this.$Img!.style.opacity = '0';
+         this.$Img!.style.transform = 'translateZ(40px)';
+         this.$Img!.style.filter = 'blur(18px)';
+      }
+      if (this.props.tbimgUrl !== nextProps.tbimgUrl) {
+         this.isTbImgLoaded = false;
+         this.$TbImg!.style.opacity = '0';
+      }
 
-      return true;
+      return this.props.imgUrl !== nextProps.imgUrl || this.props.tbimgUrl !== nextProps.tbimgUrl;
    }
 }

@@ -23,6 +23,10 @@
    justify-content: center;
 }
 
+.doc-rating i.ms-Icon {
+   font-style: normal !important;
+}
+
 .doc-rating>div {
    flex           : 0 1 5em;
    display        : flex;
@@ -55,22 +59,22 @@
    text-align : right;
 }
 
-.lightTheme-doc .doc-rating-btn-inactive>* {
+.lighttheme-doc .doc-rating-btn-inactive>* {
    color: #c8c6c4;
 }
 
-.lightTheme-doc .doc-rating-btn-active>* {
+.lighttheme-doc .doc-rating-btn-active>* {
    color: #2b88d8;
 }
 
-.darkTheme-doc .doc-rating-btn-inactive>* {
+.darktheme-doc .doc-rating-btn-inactive>* {
    color: #a19f9d;
 }
 
-.darkTheme-doc .doc-rating-btn-active>* {
-   color: #2b88d8;
+.darktheme-doc .doc-rating-btn-active>* {
+   color: lighten(#2b88d8, 10%);
 }
 
-.darkTheme-doc .doc-rating-cmt-container {
+.darktheme-doc .doc-rating-cmt-container {
    color: #edebe9;
 }
