@@ -2,11 +2,11 @@ import { DocPage } from './DocPage';
 import { lazy } from '../util';
 import { assets } from '../assets-path.json';
 
-export const Description = new DocPage(
+export const Protocols = new DocPage(
    {
       imgUrl: assets.cover.Description$jpg,
       tbimgUrl: assets.cover.tnDescription$jpg,
-      title: 'Description',
+      title: 'Protocols',
    },
-   lazy(() => import('./content/Description'))
+   lazy(() => import('./content/Protocols'))
 );

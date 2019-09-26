@@ -71,7 +71,7 @@ export default class DocPageSetting extends React.Component<IDocPageSettingProps
                   inlineLabel
                   label={<>
                      <FontIcon iconName='Translate' />
-                     <span>&nbsp;Translate</span>
+                     <span>&nbsp;Translation</span>
                   </>}
                   onText='On'
                   offText='Off'

@@ -6,6 +6,7 @@ export function queryPage(path: string): Page {
    const routes: { [_: string]: Page | null | undefined } = {
       '/': null,
       '/Description': pages.Description,
+      '/Protocols': pages.Protocols,
    };
    return routes[path] || page404;
 }

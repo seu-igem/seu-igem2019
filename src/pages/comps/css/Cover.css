@@ -60,6 +60,7 @@
 
 #cover-txt {
    font-family          : "Futura PT Light";
+   font-weight          : 100;
    font-size            : 4.5em;
    line-height          : 1.4;
    position             : absolute;

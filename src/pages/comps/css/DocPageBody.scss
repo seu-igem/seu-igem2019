@@ -232,19 +232,28 @@ $header-height        : 98px;
       margin-top: 0;
    }
 
+   &>h2:first-of-type {
+      margin-top: .2em;
+   }
+
    & h2 {
+      display      : inline-block;
+      width        : auto;
+      padding      : 0 .2em;
+      border-radius: 3px;
+      background   : rgba(68, 144, 196, .9);
       font-family  : 'Futura PT Light';
       font-size    : 1.4em;
       line-height  : 1.4;
       margin-top   : 2em;
-      margin-bottom: 1em;
+      margin-bottom: .6em;
 
       .lighttheme-doc & * {
-         color: #323130;
+         color: white;
 
          &::selection {
-            background: rgb(58, 116, 112);
-            color     : #FFF;
+            background: rgba(255, 255, 255, .5);
+            color     : #000;
          }
       }
 
@@ -259,12 +268,17 @@ $header-height        : 98px;
    }
 
    & p {
-      font-family   : 'Raleway';
-      line-height   : 1.5;
-      margin-top    : 1em;
-      margin-bottom : 1em;
-      padding-left  : 1.2em;
-      padding-right : 2em;
+      font-family  : 'Raleway';
+      line-height  : 1.5;
+      margin-top   : 1em;
+      margin-bottom: 1em;
+      padding-left : 1.2em;
+      padding-right: 2em;
+
+      @media(max-width: $no-aside-screen-width) {
+         padding-right: 1em;
+      }
+
       letter-spacing: .018em;
 
       .lighttheme-doc & {
@@ -288,8 +302,13 @@ $header-height        : 98px;
       }
    }
 
-   & i {
+   &>p>i {
       font-style: italic;
+   }
+
+   .ms-MessageBar-icon i,
+   .ms-Button i {
+      font-style: normal;
    }
 
    & b {

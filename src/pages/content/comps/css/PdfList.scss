@@ -1,0 +1,32 @@
+#doc-article>.pdf-list {
+   margin-left: 2em;
+
+   .ms-SearchBox {
+      background : transparent;
+      height     : 40px;
+      flex-grow  : 1;
+      margin-left: 1em;
+   }
+
+   .ms-SearchBox-field {
+      font-size: 16px;
+   }
+
+   .ms-DetailsHeader {
+      padding-top: 0;
+   }
+
+   .pdf-list-filelist-container {
+      margin-top: .5em;
+      height    : 20em;
+      overflow  : auto;
+   }
+}
+
+.pdf-list-beforelist {
+   display        : flex;
+   justify-content: flex-start;
+   align-items    : stretch;
+   height         : 40px;
+   overflow       : hidden;
+}

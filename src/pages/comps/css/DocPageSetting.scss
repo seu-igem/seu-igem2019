@@ -12,14 +12,15 @@
       flex       : 1 0 auto;
 
       &>.ms-Icon {
-         font-size: 2em;
+         font-size: 1.6em;
          flex     : 0 0 auto;
       }
 
       &>span {
-         font-size : 1.2em;
-         flex      : 1 0 auto;
-         text-align: right;
+         font-weight: 400;
+         font-size  : 1.2em;
+         flex       : 1 0 auto;
+         text-align : right;
       }
    }
 

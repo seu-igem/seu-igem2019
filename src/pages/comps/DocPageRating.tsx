@@ -110,7 +110,7 @@ export default class DocPageRating extends React.Component<IDocPageRatingProps, 
                </div>
             </div>
             <div className='doc-cmt-container'>
-               <TextField multiline resizable={false} placeholder='Comment on this article' rows={7} value={this.state.textFieldValue} onChange={this.onTextFieldChange} />
+               <TextField multiline resizable={false} placeholder='Comment on this article, it will not be made public.' rows={7} value={this.state.textFieldValue} onChange={this.onTextFieldChange} />
                <div className='doc-cmt-submit-container'>
                   {this.state.commentSent && <span><FontIcon iconName='CheckMark' style={{ color: 'green' }} />Thanks for your feedback. &nbsp;</span>}
                   <PrimaryButton text='Send' onClick={this.onSubmit} />
