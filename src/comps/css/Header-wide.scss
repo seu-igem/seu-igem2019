@@ -1,0 +1,109 @@
+$wideheader-vp-width: 1080px;
+
+#header-wide {
+   @media(max-width: $wideheader-vp-width) {
+      display: none;
+   }
+
+   display        : flex;
+   justify-content: space-between;
+   align-items    : center;
+}
+
+#header-nav {
+   flex   : 0 0 auto;
+   display: flex;
+   height : 100%;
+}
+
+.header-nav-3d-container {
+   width          : calc(57px + 5.4vw);
+   max-width      : 200px;
+   min-width      : 125px;
+   height         : 100%;
+   perspective    : 500px;
+   display        : flex;
+   justify-content: center;
+}
+
+.header-nav-item {
+   width           : calc(100%);
+   height          : 100%;
+   position        : relative;
+   transform-origin: center center -33px;
+   user-select     : none;
+   transform-style : preserve-3d;
+   transition      : transform .3s;
+
+   &.rotate {
+      transform: rotateX(90deg);
+   }
+}
+
+.header-nav-1 {
+   width          : 100%;
+   height         : 66px;
+   display        : flex;
+   justify-content: center;
+   align-items    : center;
+   cursor         : pointer;
+   position       : relative;
+   background     : #000;
+
+   &:hover {
+      background-color: #1A1A1A;
+   }
+
+   &:active {
+      background-color: #333;
+   }
+
+   >div {
+      font-size     : 20px;
+      line-height   : 24px;
+      letter-spacing: 2px;
+   }
+}
+
+.header-nav-2 {
+   width           : 100%;
+   position        : absolute;
+   top             : 0;
+   left            : 0;
+   transform-origin: center 32px -33px;
+   transform       : rotateX(-90deg);
+   border-radius   : 0 0 2px 2px;
+   box-shadow      : rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px,
+      rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
+   background: white;
+}
+
+.header-nav-2-item {
+   border-radius: 2px;
+   min-width    : 100%;
+   height       : 60px;
+   color        : rgb(50, 49, 48);
+   cursor       : pointer;
+
+   display    : flex;
+   align-items: center;
+
+   >div {
+      font-size     : 16px;
+      font-family   : "Segoe UI", "Segoe UI Web (West European)", "Segoe UI";
+      font-weight   : 400;
+      line-height   : 20px;
+      letter-spacing: 1px;
+      margin-left   : 10px;
+      margin-right  : 10px;
+   }
+
+   &:hover {
+      background-color: #F3F2F1;
+      color           : rgb(32, 31, 30);
+   }
+
+   &:active {
+      background-color: #EDEBE9;
+   }
+}

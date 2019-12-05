@@ -141,8 +141,6 @@ export default class Translate extends React.PureComponent<ITranslateProps, ITra
       if (context.translation.enableTranslate) {
          this.onTranslation(context.translation);
       }
-      console.log(this);
-      console.log(this.render());
    }
    public componentWillUnmount() {
       context.removeListener('translation', this.onTranslation);

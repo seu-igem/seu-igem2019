@@ -1,0 +1,32 @@
+.parts-1 {
+   display        : flex;
+   justify-content: center;
+   width          : 100%;
+   margin         : 0;
+   padding        : 0;
+
+   @media (max-width: 900px) {
+      width: auto;
+   }
+
+}
+
+.parts-2 {
+   width: 80%;
+
+   >p {
+      .num {
+         font-family: 'Segoe UI', 'Open Sans', Tahoma, Geneva, Verdana, sans-serif !important;
+      }
+
+      text-align : left !important;
+   }
+
+   @media (max-width: 900px) {
+      width: auto;
+   }
+
+   h2 {
+      margin-top: 1em !important;
+   }
+}

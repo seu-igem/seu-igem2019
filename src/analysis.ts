@@ -4,8 +4,8 @@ import { noop } from './util';
 const base = 'https://justlog.xyz/api/seu-igem';
 const URLs = {
    error: base + '/err',
-   visit: base + '/visit',
    feedback: base + '/feedback',
+   visit: base + '/visit',
 };
 
 function post(url: string, data: any, dataType?: string) {
@@ -26,13 +26,13 @@ export const analysis = {
       if (reason.length > 1e3) reason = reason.substring(0, 1000);
       post(URLs.error, {
          ua: window.navigator.userAgent,
-         time: Date.now(),
+         pathhash: window.location.pathname + window.location.hash,
          error: reason,
       }).catch(noop);
    },
-   logVisit() {
+   logVisit(pagePath: string) {
       post(URLs.visit, {
-         page: String(window.location),
+         pagePath,
       }).catch(noop);
    },
    ratingDoc(pagePath: string, rating: number) {

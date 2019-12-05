@@ -5,7 +5,7 @@ import { EventEmitter, noop } from '../util';
 export const sourceLanguage = 'en';
 export const supportedLanguages: { [_: string]: string } = _supportedLanguages;
 
-export function getDefaultLang(): string {
+export function detectDefaultLang(): string {
    const lang: string = navigator.language
       || (navigator as any).userLanguage
       || 'zh-Hans';
@@ -196,7 +196,6 @@ class Translation extends EventEmitter<{
             error();
          },
       };
-      console.log(requestOptions);
       $.ajax(requestOptions);
    }
 }

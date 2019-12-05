@@ -1,0 +1,76 @@
+.home-3 {
+   position  : absolute;
+   bottom    : -5.4em;
+   left      : 0;
+   width     : 100%;
+   min-height: calc(100vh - 84px);
+   background: white;
+   z-index   : 2;
+
+   &.show {
+      display: block;
+   }
+
+   &:not(.show) {
+      display: none;
+   }
+}
+
+.home-3-header {
+   width           : 100%;
+   background-image: url(https://2019.igem.org/wiki/images/0/04/T--SEU-Nanjing-China--4bf28259.jpg);
+   background-size : cover;
+   color           : white;
+   display         : flex;
+   justify-content : center;
+   align-items     : center;
+
+   >div {
+      width        : 80%;
+      max-width    : 1000px;
+      font-size    : 4em;
+      margin-top   : 3em;
+      margin-bottom: 1em;
+   }
+}
+
+.home-3-subheader {
+   width          : 100%;
+   display        : flex;
+   justify-content: center;
+   align-items    : center;
+
+   >div {
+      width     : 80%;
+      max-width : 1000px;
+      font-size : 2em;
+      margin-top: 1em;
+   }
+}
+
+.home-3-body {
+   width          : 100%;
+   display        : flex;
+   justify-content: center;
+   align-items    : center;
+
+   >div {
+      width    : 80%;
+      max-width: 1000px;
+
+      >p {
+         font-size  : 1.4em;
+         margin-top : 1em;
+         line-height: 1.4;
+      }
+   }
+}
+
+.home-3-end-logo {
+   display        : flex;
+   justify-content: center;
+
+   >img {
+      height: 50vh;
+   }
+}

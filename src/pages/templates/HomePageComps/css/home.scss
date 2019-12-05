@@ -1,0 +1,175 @@
+.home {
+   width     : 100%;
+   height    : calc(100vh - 18px - 66px);
+   opacity   : 1;
+   transition: opacity .3s;
+
+   &.fade-out {
+      opacity: 0;
+   }
+}
+
+.home-fixed {
+   position: fixed;
+   top     : 18px + 66px;
+   width   : 100%;
+   height  : calc(100vh - 18px - 66px);
+   overflow: hidden;
+   z-index : 0;
+}
+
+.home-logoarea-container {
+   width      : 100%;
+   height     : 100%;
+   position   : absolute;
+   z-index    : 10;
+   left       : 0;
+   top        : 0;
+   perspective: 500px;
+}
+
+.home-logoarea {
+   // width        : JS;
+   // height       : JS;
+   position        : absolute;
+   z-index         : 10;
+   border-radius   : 50%;
+   transition      : background-color .6s;
+   background-color: rgba(0, 0, 0, 1);
+   user-select     : none;
+
+   &.blue {
+      background-color: rgba(132, 204, 251, .4);
+   }
+
+   &.blue.transparent,
+   &.transparent {
+      background: rgba(132, 204, 251, 0);
+   }
+
+   &.approach {
+      animation:
+         logoarea-ani 1.4s .1s cubic-bezier(0.68, 0, 0.61, 1.17) forwards;
+   }
+
+   overflow : hidden;
+
+   >* {
+      position: absolute;
+      left    : 0;
+      top     : 0;
+      width   : 100%;
+      height  : 100%;
+      display : block;
+   }
+
+   >.logoarea-spinner {
+      z-index: 20;
+   }
+
+   >.logoarea-logo {
+      z-index  : 10;
+      opacity  : 0;
+      transform: scale(0);
+
+      &.enter {
+         opacity  : 1;
+         transform: scale(.72);
+         animation: logo-enter .3s;
+      }
+   }
+
+   >.logoarea-wave {
+      width        : calc(100% - 4px);
+      height       : calc(100% - 4px);
+      left         : 2px;
+      top          : 2px;
+      z-index      : 0;
+      border-radius: 50%;
+      overflow     : hidden;
+
+      &.show {
+         >div:first-of-type {
+            top      : 8%;
+            animation: logoarea-wave-ani 0.6s cubic-bezier(0.54, 0.43, 0.38, 1);
+         }
+      }
+   }
+}
+
+@keyframes logoarea-ani {
+   0% {
+      transform: scale(1) translateY(0) rotateX(0deg);
+   }
+
+   100% {
+      transform: scale(.69) translateY(-10vh) rotateX(-360deg);
+   }
+}
+
+@keyframes logoarea-wave-ani {
+   from {
+      top: 100%;
+   }
+
+   to {
+      top: 8%;
+   }
+}
+
+@keyframes logo-enter {
+   0% {
+      opacity  : .4;
+      transform: scale(.67);
+   }
+
+   100% {
+      opacity  : 1;
+      transform: scale(.72);
+   }
+}
+
+.fill-wave {
+   position: relative;
+
+   >div:first-of-type {
+      position: absolute;
+      left    : 0;
+      top     : 100%;
+      width   : 100%;
+      height  : 95%;
+
+      >div:first-child {
+         background         : url("data:image/svg+xml,%3Csvg width='200' height='50' viewBox='0 0 200 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='rgba(0,183,195,.6)' d='M0 25c90-45 110 55 200 0v25H0z'/%3E%3C/svg%3E");
+         background-repeat  : repeat-x;
+         background-size    : 200px 50px;
+         background-position: 0 1px;
+         width              : 100%;
+         height             : 50px;
+         position           : absolute;
+         left               : 0;
+         top                : 0;
+         animation          : fill-wave 2s linear infinite;
+      }
+
+      >div:last-child {
+         background-color: rgba(0, 183, 195, .6);
+         width           : 100%;
+         height          : 200%;
+         position        : absolute;
+         left            : 0;
+         top             : 50px;
+      }
+
+   }
+}
+
+@keyframes fill-wave {
+   0% {
+      background-position: 0 1px;
+   }
+
+   100% {
+      background-position: 200px 1px;
+   }
+}

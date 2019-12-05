@@ -1,3 +1,10 @@
 {
-   "./mds/description.md": "5c9f5dfa1c3ebd31083ce59e2c274741"
+   "./mds/desc.md": "672d1174639888616818c66c43872f40",
+   "./mds/design.md": "c3e271ac300aff2864535f282cdb0e76",
+   "./mds/prod-design.md": "44c2a1eb497d086cf1a6ebbbd9167714",
+   "./mds/ent.md": "b93808f84501a7212f08a03a40f5e17c",
+   "./mds/exp.md": "7833a1ddc2760c00d8dbb0d4700259b7",
+   "./mds/results.md": "a1ff0e97eb1770dcd73528fbba17c416",
+   "./mds/model.md": "afc30f2ca7df723dbc7a446fc5fbd403",
+   "./mds/dem.md": "7a131bc500c6e167bb4a6ccb089ea099"
 }

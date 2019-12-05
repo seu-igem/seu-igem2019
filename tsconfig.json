@@ -7,6 +7,7 @@
          "esnext"
       ],
       "allowJs": true,
+      "downlevelIteration": true,
       "skipLibCheck": true,
       "esModuleInterop": true,
       "allowSyntheticDefaultImports": true,
@@ -18,9 +19,17 @@
       "resolveJsonModule": true,
       "isolatedModules": true,
       "noEmit": true,
+      "baseUrl": "./src",
+      "paths": {
+         "@/*": [
+            "./*"
+         ],
+      },
       "jsx": "react"
    },
    "include": [
-      "src"
+      "src",
+      "src/pages/content/.tsx",
+      "src/pages/.ts"
    ]
 }

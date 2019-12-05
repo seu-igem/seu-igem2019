@@ -18,7 +18,7 @@
 
    .pdf-list-filelist-container {
       margin-top: .5em;
-      height    : 20em;
+      max-height: 43px*8;
       overflow  : auto;
    }
 }

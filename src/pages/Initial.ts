@@ -1,5 +1,5 @@
-import { Page } from '../page';
-import App from '../App';
+import { Page } from '@/page';
+import App from '@/App';
 
 class InitialPageClass implements Page {
    public App?: App;

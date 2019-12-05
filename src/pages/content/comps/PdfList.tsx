@@ -14,7 +14,10 @@ interface IPdfListProps {
       name: string;
       author: string;
       size: number;
+      url: string;
    }>;
+   zipLink: string;
+   zipName: string;
 }
 interface IPdfListState {
    items: IDocument[];
@@ -30,6 +33,7 @@ interface IDocument {
    author: string;
    fileSize: string;
    fileSizeRaw: number;
+   url: string;
 }
 
 const classNames = mergeStyleSets({
@@ -83,6 +87,7 @@ export default class PdfList extends React.Component<IPdfListProps, IPdfListStat
       });
    }
    private onItemInvoked = (item: any) => {
+      window.open(item.url);
    }
    private onChangeText = (ev?: React.ChangeEvent<HTMLInputElement>, text?: string): void => {
       this.setState({
@@ -99,6 +104,7 @@ export default class PdfList extends React.Component<IPdfListProps, IPdfListStat
       author: item.author,
       fileSize: item.size >= 1000 ? (item.size / 1024).toFixed(1) + ' MB' : item.size + ' KB',
       fileSizeRaw: item.size,
+      url: item.url,
    }));
    public state = {
       items: this.allItems,
@@ -171,7 +177,7 @@ export default class PdfList extends React.Component<IPdfListProps, IPdfListStat
       return (
          <div className='pdf-list'>
             <div className='pdf-list-beforelist'>
-               <ActionButton iconProps={{ iconName: 'Download' }}>
+               <ActionButton href={this.props.zipLink} download={this.props.zipName} target='_blank' iconProps={{ iconName: 'Download' }} styles={{ root: { width: 130, flex: '0 0 auto' } }}>
                   Download ZIP
                </ActionButton>
                <SearchBox

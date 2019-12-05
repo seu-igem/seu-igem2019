@@ -17,6 +17,12 @@ sans-serif;
 }
 
 #footer-strip-container {
+   width : 100%;
+   height: 1.8em * 3;
+}
+
+#footer-strip-set {
+   width : 100%;
    height: 1.8em * 3;
 }
 
@@ -24,18 +30,21 @@ sans-serif;
    height: 1.8em;
 
    &:nth-child(1) {
-      opacity   : .7;
-      background: darken(rebeccapurple, 5%);
+      opacity         : .7;
+      transition-delay: .2s;
+      background      : darken(rebeccapurple, 5%);
    }
 
    &:nth-child(2) {
-      opacity   : .8;
-      background: darken(rebeccapurple, 20%);
+      opacity         : .8;
+      transition-delay: .4s;
+      background      : darken(rebeccapurple, 20%);
    }
 
    &:nth-child(3) {
-      opacity   : .95;
-      background: darken(rebeccapurple, 30%);
+      opacity         : .95;
+      transition-delay: .6s;
+      background      : darken(rebeccapurple, 30%);
    }
 }
 
@@ -50,8 +59,8 @@ sans-serif;
 }
 
 .footer-space {
-   flex     : 1 1 auto;
-   min-width: 4em;
+   flex : 1 1 auto;
+   width: 4em;
 }
 
 #footer-content {
@@ -66,32 +75,20 @@ sans-serif;
 
 #footer-cta {
    flex         : 8 0 auto;
-   min-width    : 27em;
-   padding-right: 5em;
+   min-width    : 25em;
+   padding-right: 4em;
 }
 
 #footer-cta-inner {
    max-width: 50em;
 
    &>h3 {
-      font-size  : 2.2em;
-      color      : #edebe9;
-      user-select: none;
-   }
-
-   &>hr {
-      width        : 100%;
-      color        : white;
-      background   : white;
-      margin-bottom: 1.4em;
-   }
-
-   &>table {
-      margin-bottom: .4em;
-      font-size    : 1.2em;
-      line-height  : 1.4;
-      background   : transparent;
-      color        : white;
+      font-size    : 2.2em;
+      color        : #edebe9;
+      user-select  : none;
+      font-weight  : 100;
+      margin-top   : .2em;
+      margin-bottom: .6em;
    }
 }
 
@@ -136,5 +133,39 @@ sans-serif;
       font-size    : 1.2em;
       margin-bottom: .2em;
       color        : white;
+   }
+}
+
+.footer-cta-btnbar {
+   display      : inline-flex;
+   flex         : 0 0 auto;
+   flex-flow    : column;
+   margin-bottom: 2em;
+
+   >.footer-cta-btn {
+      display    : flex;
+      width      : 100%;
+      align-items: center;
+      height     : 3em;
+      user-select: none;
+      cursor     : pointer;
+      transition : background-color .3s;
+
+      >div:first-child {
+         width       : 2em;
+         height      : 2em;
+         margin-left : .8em;
+         margin-right: .8em;
+      }
+
+      >div:last-child {
+         max-height  : 100%;
+         font-size   : 1.1em;
+         margin-right: 2em;
+      }
+
+      &:hover {
+         background-color: rgba(255, 255, 255, .2);
+      }
    }
 }

@@ -36,6 +36,56 @@ export function lazy<T extends () => any>(fn: T) {
    }) as T;
 }
 
+export function normalizeClassNames<T extends {
+   [_: string]: undefined | boolean | number | string |
+   Array<undefined | boolean | number | string>
+}>(cns: T): {
+      [_ in keyof T]: string;
+   } {
+   const result: { [_ in keyof T]: string } = {} as any;
+   for (const key of Object.keys(cns)) {
+      const _key = key as keyof T;
+      const val = cns[_key];
+      if (typeof val === 'string') {
+         result[_key] = val;
+         continue;
+      }
+      if (Array.isArray(val)) {
+         result[_key] = val
+            .filter(item => typeof item === 'string')
+            .join(' ');
+         continue;
+      }
+      result[_key] = '';
+   }
+   return result;
+}
+
+export function loadImg(url: string): Promise<HTMLImageElement> {
+   return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+         resolve(img);
+      };
+      img.onerror = e => {
+         reject(e);
+      };
+      img.src = url;
+   });
+}
+
+
+export function randomInt(from: number, to: number) {
+   return Math.floor(Math.random() * (to + 1 - from)) + from;
+}
+
+export function randomPointInCircle(x: number, y: number, radius: number) {
+   const theta = Math.random() * 2 * Math.PI;
+   const r2 = Math.random() * radius * radius;
+   const r = Math.sqrt(r2);
+   return [x + r * Math.cos(theta), y + r * Math.sin(theta)] as [number, number];
+}
+
 export class EventEmitter<T extends {
    [_: string]: any[];
 } = {

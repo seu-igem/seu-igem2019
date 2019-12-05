@@ -33,7 +33,7 @@ const assetsPath: AssetsPath = fs.existsSync('../src/assets-path.json')
    const uploadFile = concurrencyRestrictify(_uploadFile, 2);
    async function _uploadFile(filepath: string, hash: string) {
       if (track[hash]) {
-         console.log(filepath + ' 将不被上传');
+         // console.log(filepath + ' 将不被上传');
          return track[hash];
       }
 
@@ -50,8 +50,8 @@ const assetsPath: AssetsPath = fs.existsSync('../src/assets-path.json')
       await Promise.all([
          page.click('input[name=wpUpload]'),
          page.waitForNavigation({
-            waitUntil: 'domcontentloaded',
-            timeout: 120000,
+            waitUntil: 'load',
+            timeout: 300000,
          }),
       ]);
 
@@ -98,7 +98,7 @@ const assetsPath: AssetsPath = fs.existsSync('../src/assets-path.json')
                   [file.hash]: fileURL,
                });
             } catch (e) {
-               console.log(file.filepath + ': 上传失败');
+               console.log(file.filepath + ': 上传失败 ' + getRemoteFilename(file.filepath, file.hash));
             } finally {
                const dirs = file.filepath.split('/');
                dirs.shift();
@@ -107,7 +107,8 @@ const assetsPath: AssetsPath = fs.existsSync('../src/assets-path.json')
                let obj: any = newAssetsPath;
                dirs.forEach((dir, i) => {
                   dir = dir
-                     .replace(/\-(\w)/g, (all, $1: string) => $1.toUpperCase())
+                     .replace(/\-([0-9a-zA-Z_])/g, (all, $1: string) => $1.toUpperCase())
+                     .replace(/\s/g, '')
                      .replace(/\./g, '$');
                   obj[dir] = i === (dirs.length - 1)
                      ? fileURL

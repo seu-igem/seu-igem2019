@@ -1,0 +1,39 @@
+.attr-1 {
+   display        : flex;
+   justify-content: center;
+   width          : 100%;
+   margin         : 0;
+   padding        : 0;
+
+   @media (max-width: 900px) {
+      width: auto;
+   }
+
+}
+
+.attr-2 {
+   width: 80%;
+
+   @media (max-width: 900px) {
+      width: auto;
+   }
+
+   @media (min-width: 700px) {
+      display              : grid;
+      grid-template-columns: 1fr 1fr;
+   }
+
+   h2 {
+      margin-top: 1em !important;
+   }
+}
+
+@media (min-width: 700px) {
+   .grid-1 {
+      background: rgba(33, 159, 213, .04);
+   }
+
+   .grid-2 {
+      background: rgba(127, 127, 127, .04);
+   }
+}

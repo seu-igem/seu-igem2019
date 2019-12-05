@@ -27,7 +27,7 @@ $cir-size: 60px;
       left         : 0;
       opacity      : 0;
       border-radius: 100%;
-      animation    : ball-scale-multiple 1s 0s linear infinite;
+      animation    : ball-scale-multiple 1.35s 0s linear infinite;
    }
 
    >div:nth-child(2) {
@@ -35,7 +35,7 @@ $cir-size: 60px;
    }
 
    >div:nth-child(3) {
-      animation-delay: -.2s;
+      animation-delay: -.25s;
    }
 }
 
@@ -45,7 +45,12 @@ $cir-size: 60px;
       opacity  : 0;
    }
 
-   5% {
+   20% {
+      transform: scale(0);
+      opacity  : 0;
+   }
+
+   24.5% {
       opacity: 1;
    }
 

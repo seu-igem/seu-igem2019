@@ -1,6 +1,6 @@
-import { DocPage } from './DocPage';
-import { lazy } from '../util';
-import { assets } from '../assets-path.json';
+import { DocPage } from './templates/DocPage';
+import { lazy } from '@/util';
+import { assets } from '@/assets-path.json';
 
 export const Description = new DocPage(
    {

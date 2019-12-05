@@ -3,8 +3,8 @@
       background:
          linear-gradient(to right,
             rgba(255, 255, 255, 0),
-            rgba(198, 230, 232, .8) 40%,
-            rgba(198, 230, 232, .8) 60%,
+            rgba(198, 230, 232, 1) 40%,
+            rgba(198, 230, 232, 1) 60%,
             rgba(255, 255, 255, 0) 100%);
    }
 
@@ -53,11 +53,11 @@
    width    : 3em;
    height   : 3em;
    transform: translate(-50%, -50%);
+   cursor   : pointer;
 
    &>div {
       position     : absolute;
       border-radius: 100%;
-      cursor       : pointer;
    }
 
    &>div:first-child {
@@ -67,9 +67,14 @@
       height    : .8em;
       background: rgb(0, 160, 233);
       z-index   : 1;
+      transition: transform .3s;
    }
 
    &:hover {
+      &>div:first-child {
+         transform: scale(.8);
+      }
+
       &>div:last-child {
          transform: scale(.7);
          opacity  : .2;

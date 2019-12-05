@@ -1,0 +1,48 @@
+.Link {
+   cursor  : pointer;
+   display : inline-block;
+   position: relative;
+
+   >a {
+      text-decoration: none;
+
+      &:link,
+      &:visited {
+         .lighttheme-doc & {
+            color: #0078d4;
+         }
+
+         .darktheme-doc & {
+            color: lighten(#0078d4, 20%);
+         }
+
+         text-decoration: none;
+      }
+
+      &:hover,
+      &:hover {
+         .lighttheme-doc & {
+            color: #004578;
+         }
+
+         .darktheme-doc & {
+            color: lighten(#0078d4, 30%);
+         }
+      }
+
+      &:before {
+         content         : "";
+         position        : absolute;
+         bottom          : 0px;
+         width           : 100%;
+         height          : 2px;
+         background-color: #008ddd;
+         transform       : scaleX(0);
+         transition      : all 0.2s ease-in-out 0s;
+      }
+
+      &:hover:before {
+         transform: scaleX(1);
+      }
+   }
+}

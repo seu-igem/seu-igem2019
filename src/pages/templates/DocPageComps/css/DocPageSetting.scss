@@ -1,0 +1,39 @@
+.doc-setting-tg {
+   &.ms-Toggle {
+      font-size      : 1em;
+      justify-content: flex-end;
+   }
+
+   & .ms-Toggle-label {
+      line-height: 2em;
+      padding    : 0;
+      display    : flex;
+      align-items: center;
+      flex       : 1 0 auto;
+
+      &>.ms-Icon {
+         font-size: 1.6em;
+         flex     : 0 0 auto;
+      }
+
+      &>span {
+         font-weight: 400;
+         font-size  : 1.2em;
+         flex       : 1 0 auto;
+         text-align : right;
+      }
+   }
+
+   & .ms-Toggle-stateText {
+      word-break  : keep-all;
+      line-height : 20px;
+      width       : 24px;
+      margin-right: 0;
+      text-align  : right;
+      overflow    : visible;
+   }
+}
+
+.doc-setting-dd {
+   & .ms-Dropdown {}
+}

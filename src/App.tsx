@@ -14,7 +14,8 @@ import Loading from './comps/Loading';
 import Footer from './comps/Footer';
 
 import { InitialPage } from './pages/Initial';
-
+import { analysis } from './analysis';
+import { AlertSafari } from './comps/AlertSafari';
 
 interface IAppState {
    BeforeHeader: React.ComponentType<any> | false;
@@ -23,14 +24,15 @@ interface IAppState {
    BodyProps: any;
    showLoading: boolean;
    showFooter: boolean;
+   alertSafari: boolean;
 }
 
 export default class App extends React.Component<{}, IAppState> {
-   public $BeforeHeader: any;
-   public $Header: Header;
-   public $Body: any;
-   public $Footer: Footer;
-   public $FixedBelowHeader: HTMLDivElement;
+   public $beforeHeader: any;
+   public $header: Header;
+   public $body: any;
+   public $footer: Footer;
+   public $fixedBelowHeader: HTMLDivElement;
 
    public state: IAppState = {
       BeforeHeader: false,
@@ -39,6 +41,7 @@ export default class App extends React.Component<{}, IAppState> {
       BodyProps: {},
       showLoading: true,
       showFooter: false,
+      alertSafari: false,
    };
    public currPage: Page = InitialPage;
    public nextPage: Page | null = null;
@@ -53,27 +56,38 @@ export default class App extends React.Component<{}, IAppState> {
             window.scrollTo(0, csp - wd);
          });
       }
-      initTheme();
 
-      context.on('headerFixed', isFixed => {
-         if (isFixed) {
-            this.$FixedBelowHeader.classList.add('on-header-fixed');
-         } else {
-            this.$FixedBelowHeader.classList.remove('on-header-fixed');
+      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+         if (document.cookie.replace(/(?:(?:^|.*;\s*)alertSafariOnce\s*=\s*([^;]*).*$)|^.*$/, '$1') !== 'true') {
+            this.setState({
+               alertSafari: true,
+            });
+            document.cookie = 'alertSafariOnce=true; expires=Fri, 31 Dec 9999 23:59:59 GMT';
          }
-      });
+      }
+
+      initTheme();
 
       this.currPage.init({ App: this });
 
       this.watchPageBehavior();
-
-      locaCtrl.on('pathDidUpdate', this.navToPath);
    }
 
    public watchPageBehavior() {
+      context.on('headerFixed', isFixed => {
+         if (isFixed) {
+            this.$fixedBelowHeader.classList.add('on-header-fixed');
+         } else {
+            this.$fixedBelowHeader.classList.remove('on-header-fixed');
+         }
+      });
+
       window.addEventListener('scroll', () => {
          context.emit('scroll');
       });
+
+      locaCtrl.on('pathDidUpdate', analysis.logVisit);
+      locaCtrl.on('pathDidUpdate', this.navToPath);
    }
 
    public navToPath = (path: string) => {
@@ -94,25 +108,28 @@ export default class App extends React.Component<{}, IAppState> {
          <div id='App'>
             <div id='App-before-header'>
                {BeforeHeader
-                  ? <BeforeHeader ref={(el: any) => this.$BeforeHeader = el} {...BeforeHeaderProps} />
+                  ? <BeforeHeader ref={(el: any) => this.$beforeHeader = el} {...BeforeHeaderProps} />
                   : this.state.showLoading && <div id='bh-loading-placeholder'></div>
                }
             </div>
 
-            <Header ref={el => this.$Header = el!} />
+            <Header ref={el => this.$header = el!} />
 
             <div id='App-body'>
                <Loading showLoading={this.state.showLoading} />
-               <div id='fixed-below-header' ref={el => this.$FixedBelowHeader = el!}></div>
+               <div id='fixed-below-header' ref={el => this.$fixedBelowHeader = el!}></div>
                {Body &&
                   <Body
-                     ref={(el: any) => this.$Body = el}
-                     $Header={this.$Header}
-                     $FixedBelowHeader={this.$FixedBelowHeader}
+                     ref={(el: any) => this.$body = el}
+                     $header={this.$header}
+                     $fixedBelowHeader={this.$fixedBelowHeader}
                      {...BodyProps}
                   />}
             </div>
-            <Footer ref={el => this.$Footer = el!} showFooter={this.state.showFooter} />
+
+            <AlertSafari show={this.state.alertSafari} hide={() => { this.setState({ alertSafari: false }); }} />
+
+            <Footer ref={el => this.$footer = el!} showFooter={this.state.showFooter} />
          </div>
       );
    }

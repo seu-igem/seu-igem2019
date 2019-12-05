@@ -2,6 +2,8 @@ import React from 'react';
 import { assets } from '../assets-path.json';
 
 import './css/Footer.scss';
+import { svgMail } from './assets/svg-mail';
+import { svgTwi } from './assets/svg-twi';
 
 interface IFooterProps {
    showFooter?: boolean;
@@ -18,9 +20,11 @@ export default class Footer extends React.Component<IFooterProps> {
       return (
          <div id='footer' style={{ display: this.props.showFooter ? 'block' : 'none' }}>
             <div id='footer-strip-container'>
-               <div id='footer-strip-1' className='footer-strip'></div>
-               <div id='footer-strip-2' className='footer-strip'></div>
-               <div id='footer-strip-3' className='footer-strip'></div>
+               <div id='footer-strip-set'>
+                  <div id='footer-strip-1' className='footer-strip'></div>
+                  <div id='footer-strip-2' className='footer-strip'></div>
+                  <div id='footer-strip-3' className='footer-strip'></div>
+               </div>
             </div>
             <div id='footer-1'>
                <div id='footer-2'>
@@ -30,24 +34,16 @@ export default class Footer extends React.Component<IFooterProps> {
                         <div id='footer-cta'>
                            <div id='footer-cta-inner'>
                               <h3>Contact us</h3>
-                              <hr />
-                              <table><tbody>
-                                 <tr>
-                                    <td>Email</td>
-                                    <td style={{ width: '1.8em' }}></td>
-                                    <td>XXXXXXXXXX</td>
-                                 </tr>
-                                 <tr>
-                                    <td>Twitter</td>
-                                    <td style={{ width: '1.8em' }}></td>
-                                    <td>XXXXXXXXXX</td>
-                                 </tr>
-                                 <tr>
-                                    <td>Facebook</td>
-                                    <td style={{ width: '1.8em' }}></td>
-                                    <td>XXXXXXXXXX</td>
-                                 </tr>
-                              </tbody></table>
+                              <div className='footer-cta-btnbar'>
+                                 <div className='footer-cta-btn' onClick={() => this.onClickLogoBtn('mailto:SEUIGEM2019@outlook.com')}>
+                                    <div>{svgMail}</div>
+                                    <div>SEUIGEM2019@outlook.com</div>
+                                 </div>
+                                 <div className='footer-cta-btn' onClick={() => this.onClickLogoBtn('https://twitter.com/AlgaeTerminator')}>
+                                    <div>{svgTwi}</div>
+                                    <div>@AlgaeTerminator</div>
+                                 </div>
+                              </div>
                            </div>
                         </div>
                         <div id='footer-logo'>

@@ -1,0 +1,7 @@
+### Principle
+
+In biochemistry, Michaelis–Menten kinetics is one of the best-known models of enzyme kinetics. It is named after German biochemist Leonor Michaelis and Canadian physician Maud Menten. The model takes the form of an equation describing the rate of enzymatic reactions, by relating reaction rate v (rate of formation of product, \[P\]) to \[S\], the concentration of a substrate S. Its formula is given by
+ 
+This equation is called the Michaelis–Menten equation. Here, Vmax represents the maximum rate achieved by the system (which happens at saturating substrate concentration). The value of the Michaelis constant KM is numerically equal to the substrate concentration at which the reaction rate is half of Vmax. Biochemical reactions involving a single substrate are often assumed to follow Michaelis–Menten kinetics, without regard to the model's underlying assumptions.
+
+https://en.wikipedia.org/wiki/Michaelis%E2%80%93Menten_kinetics

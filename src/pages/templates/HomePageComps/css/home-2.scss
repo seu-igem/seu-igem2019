@@ -1,0 +1,164 @@
+.home-2 {
+   background: rgba(0, 183, 195, 0.6);
+   width     : 100%;
+   height    : 100%;
+   overflow  : hidden;
+   position  : absolute;
+   top       : 100%;
+   left      : 0;
+   z-index   : 1;
+
+   &.show {
+      display: block;
+   }
+
+   &:not(.show) {
+      display: none;
+   }
+
+   &.smooth-bg {
+      transition: background-color .6s;
+   }
+}
+
+.home-2-content {
+   position      : absolute;
+   left          : 0;
+   top           : 0;
+   width         : 100%; // <- Default value, will be reset by JS
+   height        : 100%;
+   overflow      : hidden;
+   // will-change: transform;
+}
+
+.home-2-sect {
+   position: absolute;
+   left    : 0;
+   top     : 0;
+   width   : 50vw;
+   height  : 100%;
+   overflow: visible;
+}
+
+.home-2-flex {
+   width          : 100%;
+   height         : 100%;
+   display        : flex;
+   justify-content: center;
+   align-items    : center;
+}
+
+.s2-text {
+   width     : 100%;
+   color     : white;
+   transform : translate(25vh, -6.9vh);
+   opacity   : 0;
+   position  : relative;
+   left      : 3em;
+   transition: left .6s, opacity .6s;
+
+   >.s2-h1 {
+      font-size    : 4em;
+      margin-bottom: .2em;
+   }
+
+   >.s2-h2 {
+      font-size: 2.7em;
+   }
+
+   &.show {
+      left   : 0;
+      opacity: 1;
+   }
+}
+
+.s3-bg {
+   width                : 100%;
+   height               : 100%;
+   background-attachment: fixed;
+   background-image     : url(https://2019.igem.org/wiki/images/5/5b/T--SEU-Nanjing-China--d4f185d3.jpg);
+   background-position  : 0 84px;
+   background-size      : cover;
+   position             : relative;
+   overflow             : hidden;
+}
+
+.s4-t1,
+.s4-t2 {
+   position: absolute;
+   width   : 100%;
+   height  : 100%;
+   top     : 0;
+   left    : 0;
+}
+
+.s4-t1 {
+   z-index   : 1;
+   opacity   : 1;
+   transition: opacity 1s, left 1s;
+
+   &.hide {
+      opacity: 0;
+      left   : 3em;
+   }
+}
+
+.s4-t2 {
+   z-index: 0;
+}
+
+.home-2-sect-inner {
+   margin-left  : 3em;
+   padding-right: 3em;
+   width        : 100%;
+   max-height   : calc(100vh - 84px - 4em);
+   overflow-y   : auto;
+
+   >.home-2-sect-header {
+      font-size: 3em;
+   }
+
+   >.home-2-sect-subheader {
+      font-size : 2em;
+      margin-top: .5em;
+      text-align: right;
+   }
+
+   >.home-2-sect-body {
+      margin-top : 1em;
+      font-size  : 1.4em;
+      line-height: 1.4;
+
+      >p {
+         margin-bottom: .6em;
+      }
+   }
+}
+
+.s5-bg {
+   width                : 100%;
+   height               : 100%;
+   background-attachment: fixed;
+   background-image     : url(https://2019.igem.org/wiki/images/f/f9/T--SEU-Nanjing-China--e22390ff.jpg);
+   background-position  : 0 84px;
+   background-size      : cover;
+   position             : relative;
+   overflow             : hidden;
+}
+
+.s7-bg {
+   width     : 100%;
+   height    : 100%;
+   overflow  : hidden;
+   position  : relative;
+   opacity   : 0;
+   left      : 18em;
+   top       : 4.8em;
+   transition: opacity .3s, left .8s ease-out, top .8s ease-out;
+
+   &.in {
+      opacity: 1;
+      top    : 0;
+      left   : 0;
+   }
+}

@@ -8,7 +8,9 @@ declare namespace NodeJS {
       readonly PUBLIC_URL: string;
    }
 }
-
+declare module 'ngl' {
+   export const Stage: any;
+}
 declare module '*.bmp' {
    const src: string;
    export default src;

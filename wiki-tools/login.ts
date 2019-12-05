@@ -11,7 +11,7 @@ export default async (browser: pupp.Browser) => {
 
    await Promise.all([
       page.click('.submit'),
-      page.waitForNavigation({ waitUntil: 'networkidle0' }),
+      page.waitForNavigation({ waitUntil: 'networkidle0', timeout: 60000 }),
    ]);
    await page.close();
 };

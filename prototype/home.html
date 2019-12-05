@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+<head>
+   <title> </title>
+   <meta charset="utf8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+   <meta name="theme-color" content="#C6E6E8" />
+   <link rel="stylesheet" type="text/css" href="css/fonts.css">
+   <link rel="stylesheet" type="text/css" href="css/reset.css">
+   <link rel="stylesheet" type="text/css" href="css/home.css">
+</head>
+
+<body>
+   <div id="menubar"></div>
+   <div id="root">
+      <div id="App">
+         <div id="home">
+            <div id="home-1">
+               <canvas id="home-1-mask"></canvas>
+               <div id="home-1-logoarea">
+                  <svg id="home-1-loading-spinner" xmlns="http://www.w3.org/2000/svg" version="1.1"
+                     viewBox="0 0 100 100">
+                     <!-- <circle fill="#000" cx="50" cy="50" r="50" /> -->
+                     <circle cx="50" cy="50" r="49" stroke="#F0FAFF" stroke-linecap="round" stroke-dasharray="307.8761"
+                        stroke-dashoffset="230" fill="none" stroke-width="2">
+                        <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1300ms"
+                           repeatCount="indefinite" keyTimes="0;1" calcMode="spline" keySplines=".53,.21,.29,.67"
+                           values="0 50 50; 360, 50 50" />
+                        <animate id="home-1-loading-spinner-ani" attributeName="stroke-dashoffset" attributeType="XML"
+                           from="230" to="0" begin="indefinite" dur="1000ms" fill="freeze" />
+                     </circle>
+                  </svg>
+                  <img id="home-1-logo" src="./assets/team-logo-stroke.svg" />
+                  <div class="fill-wave"
+                     style="width: 100%; height: 100%; position: absolute; left: 0; top: 0; z-index: 3;">
+                     <div class="fill-wave-content">
+                        <div></div>
+                        <div></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <script src="js/jquery-3.4.1.min.js"></script>
+   <script src="js/home.js"></script>
+</body>
+
+</html>
